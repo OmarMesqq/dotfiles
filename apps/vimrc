@@ -1,0 +1,22 @@
+syntax on
+
+filetype plugin on
+filetype indent on 
+
+set cursorline
+set incsearch
+set viminfo="NONE"
+set number
+set ruler 
+set ignorecase
+set smartcase
+set hlsearch 
+set showmatch
+set mouse=a
+set laststatus=2
+
+colorscheme elflord
+
+" For compiling LaTeX documents
+map çç :!pdflatex % \<CR>
+
