@@ -165,8 +165,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec setxkbmap br
+bindsym $mod+n exec setxkbmap br
 exec python ~/scripts/wallpaper.py
-exec python ~/scripts/temp.py
 exec polybar example 
 
 default_border none 
@@ -177,6 +177,8 @@ bindsym Mod1+1 exec firefox
 bindsym Mod1+2 exec alacritty -e ranger 
 
 bindsym Mod1+3 exec firefox --private-window 
+
+bindsym Mod1+4 exec code
 
 
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -195,4 +197,7 @@ gaps inner 2
 gaps outer 0
 
 for_window [class="Alacritty" instance="Alacritty"] floating enable
-for_window [class="^.*"] border pixel 0 
+for_window [class="^.*"] border pixel 0
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+for_window [class="firefox" instance="Browser"] floating enable
+
