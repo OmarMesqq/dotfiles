@@ -178,8 +178,6 @@ bindsym Mod1+2 exec alacritty -e ranger
 
 bindsym Mod1+3 exec firefox --private-window 
 
-bindsym Mod1+4 exec code
-
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym F11 exec playerctl previous 
