@@ -8,7 +8,8 @@ function cl
    ls  
 end
 
-
+alias d='cl ~/j/downloads/'
+alias la='ls -A'
 alias ..='cl ..'
 alias r='ranger'
 alias rm='echo Instead, use del'
