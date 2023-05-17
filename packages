@@ -15,7 +15,7 @@ bmon
 bind
 unbound
 polybar
-i3-gaps
+i3-wm
 dmenu
 feh
 nmap
@@ -32,6 +32,9 @@ fish
 firefox
 calibre
 dhcpcd 
+iwd
+dialog
+wpa_supplicant
 vlc
 firewalld
 pacman-contrib
