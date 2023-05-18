@@ -8,10 +8,9 @@ function cl
    ls  
 end
 
-alias d='cl ~/j/downloads/'
-alias la='ls -A'
+export LESSHISTFILE=-
+
 alias ..='cl ..'
 alias r='ranger'
-alias rm='echo Instead, use del'
-alias del='trash-put'
 alias c='clear'
+alias la='ls -A'
