@@ -10,6 +10,7 @@ end
 
 export LESSHISTFILE=-
 
+alias fs='killall stremio && killall node'
 alias ..='cl ..'
 alias r='ranger'
 alias c='clear'
