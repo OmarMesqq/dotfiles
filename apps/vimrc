@@ -13,7 +13,7 @@ set smartcase
 set hlsearch 
 set showmatch
 set mouse=a
-set laststatus=2
+"set laststatus=2
 
 colorscheme elflord
 
