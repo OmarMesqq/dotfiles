@@ -19,6 +19,7 @@ ranger
 pacman-contrib
 texlive-most
 trash-cli
+pdftk
 
 polybar
 i3-wm
