@@ -5,8 +5,10 @@ linux-firmware
 intel-ucode
 grub
 efibootmgr
+lvm2
 
 fish
+alacritty
 vim 
 man-db
 git
@@ -27,12 +29,24 @@ dmenu
 feh
 redshift
 noto-fonts-emoji
+adobe-source-han-sans-otc-fonts
+ttf-hack
+ttf-font-awesome
+otf-latinmodern-math
+lxappearance
+gnome-themes-extra
 xorg-xinit
 xorg-server
 
 firefox
 calibre
 vlc
+zathura
+zathura-pdf-mupdf
+pipewire
+pipewire-jack 
+pipewire-alsa 
+pipewire-pulse
 
 dhcpcd 
 iwd
@@ -41,4 +55,3 @@ wpa_supplicant
 bind
 openssh
 firewalld
-
