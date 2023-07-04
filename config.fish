@@ -8,9 +8,15 @@ function cl
    ls  
 end
 
+# Prompt
+function fish_prompt 
+	set_color purple 
+	echo (prompt_pwd) '$' (set_color normal)
+end
+
+
 export LESSHISTFILE=-
 
-alias fs='killall stremio && killall node'
 alias ..='cl ..'
 alias r='ranger'
 alias c='clear'
