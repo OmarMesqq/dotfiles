@@ -17,6 +17,7 @@ wpa_supplicant
 bind
 openssh
 firewalld
+inetutils
 
 fish
 vim 
