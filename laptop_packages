@@ -47,6 +47,10 @@ p7zip
 htop
 bmon
 nmap
+docker 
+docker-buildx
+libguestfs 
+qemu-desktop
 
 lxappearance
 gnome-themes-extra
