@@ -25,6 +25,7 @@ ranger
 
 xorg-server
 xorg-xinit
+xorg-xhost
 alacritty
 polybar
 i3-wm
