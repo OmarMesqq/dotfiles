@@ -30,7 +30,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty 
+bindsym $mod+Return exec urxvt 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -166,7 +166,8 @@ bindsym $mod+r mode "resize"
 
 exec setxkbmap br
 bindsym $mod+n exec setxkbmap br
-#exec feh --bg-scale /home/omar/wallpaper/scream.webp
+exec --no-startup-id picom -b
+exec feh --bg-scale /home/omar/wallpaper/daFuckCat.jpg
 exec polybar example 
 
 default_border none 
@@ -174,7 +175,7 @@ default_floating_border none
 
 bindsym Mod1+1 exec firefox 
 
-bindsym Mod1+2 exec alacritty -e ranger 
+bindsym Mod1+2 exec urxvt -e ranger 
 
 bindsym Mod1+3 exec firefox --private-window 
 
@@ -198,6 +199,7 @@ gaps outer 0
 
 #for_window [class="Alacritty" instance="Alacritty"] floating enable
 for_window [class="^.*"] border pixel 0
+for_window [class="URxvt"] floating enable 
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="firefox" instance="Browser"] floating enable
 for_window [class="Tor Browser" instance="Browser"] floating enable
