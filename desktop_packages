@@ -15,6 +15,7 @@ bind
 openssh
 firewalld
 inetutils
+whois
 
 fish
 vim 
@@ -26,6 +27,7 @@ ranger
 xorg-server
 xorg-xinit
 xorg-xhost
+picom
 alacritty
 polybar
 i3-wm
@@ -36,6 +38,7 @@ redshift
 
 noto-fonts-emoji
 adobe-source-han-sans-otc-fonts
+ttf-dejavu
 ttf-hack
 ttf-font-awesome
 otf-latinmodern-math
@@ -49,11 +52,19 @@ docker
 docker-buildx
 libguestfs 
 qemu-desktop
+qbittorrent
+bmon
+htop
+httpie
+neofetch
+
 
 lxappearance
 gnome-themes-extra
 
 firefox
+torbrowser-launcher
+chromium
 calibre
 vlc
 zathura
@@ -64,8 +75,26 @@ pipewire
 pipewire-jack 
 pipewire-alsa 
 pipewire-pulse
+audacity
+
+cmake
+code
+delve
+ghc
+ghc-static
+go
+go-tools
+gopls
+ocaml
+npm
+re2c
+rust
+rust-src
+tcl
+tk 
+typescript
+
 
 texlive-most
 trash-cli
 pdftk
-

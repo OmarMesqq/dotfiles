@@ -30,7 +30,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt 
+bindsym $mod+Return exec alacritty 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -175,7 +175,7 @@ default_floating_border none
 
 bindsym Mod1+1 exec firefox 
 
-bindsym Mod1+2 exec urxvt -e ranger 
+bindsym Mod1+2 exec alacritty -e ranger 
 
 bindsym Mod1+3 exec firefox --private-window 
 
@@ -204,4 +204,3 @@ for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="firefox" instance="Browser"] floating enable
 for_window [class="Tor Browser" instance="Browser"] floating enable
 for_window [class="firefox" instance="firefox"] resize set 800 600
-
