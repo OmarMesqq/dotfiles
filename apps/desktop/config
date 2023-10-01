@@ -167,7 +167,7 @@ bindsym $mod+r mode "resize"
 exec setxkbmap br
 bindsym $mod+n exec setxkbmap br
 exec --no-startup-id picom -b
-exec feh --bg-scale /home/omar/wallpaper/daFuckCat.jpg
+exec feh --bg-scale /home/omar/wallpaper/ls.png
 exec polybar example 
 
 default_border none 
