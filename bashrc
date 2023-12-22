@@ -1,14 +1,24 @@
-unset HISTFILE
-export LESSHISTFILE=-
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias ..='cl ..'
+alias c='clear'
+alias r='ranger'
 
 cl() {
-	cd $@ 
-	ls 
+    if [ -n "$1" ]; then
+        cd "$1" && ls
+    else
+        cd && ls
+    fi
 }
 
-alias fs='killall stremio && killall node'
-alias cd='cl'
-alias ..='cl ..'
-alias r='ranger' 
-alias c='clear'
-alias la='ls -A' 
+PS1='[\u@\h \W]\$ '
+
+unset HISTFILE 
