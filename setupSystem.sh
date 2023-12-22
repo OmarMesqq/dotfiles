@@ -12,6 +12,8 @@ sudo pacman -S openssh firewalld \
     ranger
 
 sudo systemctl enable firewalld.service
+sudo systemctl start firewalld.service
+
 wireless_interface=$(ip link | awk '/^[0-9]+: wl|^[0-9]+: wlan/ {print $2}' | sed 's/://')
 
 if [ -n "$wireless_interface" ]; then 
