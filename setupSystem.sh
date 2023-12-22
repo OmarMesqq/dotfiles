@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 # Firstly, update and upgrade system
 sudo pacman -Syu 
@@ -10,7 +11,19 @@ sudo pacman -S openssh firewalld \
     ranger
 
 sudo systemctl enable firewalld.service
-# Firewalld confs
+wireless_interface=$(ip link | awk '/^[0-9]+: wl|^[0-9]+: wlan/ {print $2}' | sed 's/://')
+
+if [ -n "$wireless_interface" ]; then 
+    echo "Found a wireless Interface: $wireless_interface"
+    sudo firewall-cmd --zone=public --change-interface=$wireless_interface
+    # Disable SSH server allowance
+    sudo firewall-cmd --zone=public --remove-service ssh
+    sudo firewall-cmd --runtime-to-permanent
+    sudo systemctl restart firewalld.service
+else 
+    echo "No wireless interface found. NOT CONFIGURING FIREWALL"
+fi
+
 sudo systemctl enable fstrim.timer
 sudo systemctl enable paccache.timer
 
@@ -47,6 +60,7 @@ sudo pacman -S bind \
     libguestfs \
     qemu-desktop
 
+sudo systemctl enable docker.service
 
 # Laptop?
 sudo pacman -S i3lock \
