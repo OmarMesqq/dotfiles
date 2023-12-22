@@ -15,8 +15,7 @@ set showmatch
 set mouse=a
 "set laststatus=2
 
-colorscheme elflord
+"colorscheme elflord
 
 " For compiling LaTeX documents
 map çç :!pdflatex % \<CR>
-
