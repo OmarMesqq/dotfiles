@@ -1,0 +1,16 @@
+base
+base-devel
+linux
+linux-firmware
+intel-ucode
+
+grub
+efibootmgr
+
+lvm2    # Laptop
+
+dhcpcd 
+iwd
+
+vim 
+git 
