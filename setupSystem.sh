@@ -51,7 +51,12 @@ sudo pacman -S bind \
 # Laptop?
 sudo pacman -S i3lock \
     sof-firmware \
-    acpi 
+    acpi \
+    bluez \
+    bluez-utils \
+    rtkit \
+    xorg-xrandr \
+    xorg-xbacklight
 
 # Sound 
 sudo pacman -S pavucontrol \
