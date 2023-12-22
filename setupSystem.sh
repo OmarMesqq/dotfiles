@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 # Firstly, update and upgrade system
 sudo pacman -Syu 
 
@@ -134,7 +133,7 @@ read -p "Enter your choice: " user_choice
 is_laptop=$(echo "$user_choice" | tr '[:upper:]' '[:lower:]')
 
 if [ "$is_laptop" ="y" ]; then 
-    cp apps/laptop/40-libinput.conf /etc/X11/xorg.conf.d
+    sudo cp apps/laptop/40-libinput.conf /etc/X11/xorg.conf.d
     cp apps/laptop/config ~/.config/i3
     cp apps/laptop/config.conf ~/.config/neofetch
     cp apps/laptop/config.ini ~/.config/polybar
