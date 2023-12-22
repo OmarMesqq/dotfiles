@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+
 
 # Firstly, update and upgrade system
 sudo pacman -Syu 
@@ -105,6 +105,7 @@ sudo pacman -S code \
     tk \
     typescript
 
+set -e
 # Configuration files
 mkdir -p ~/.config/fish 
 cp bashrc ~/.bashrc
