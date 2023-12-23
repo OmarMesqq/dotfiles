@@ -3,7 +3,7 @@
 # Firstly, update and upgrade system
 sudo pacman -Syu 
 
-# Installing packages
+# Basic services and packages
 sudo pacman -S openssh firewalld \
     fish \
     man-db \
@@ -49,7 +49,8 @@ sudo pacman -S noto-fonts-emoji \
     adobe-source-han-sans-otc-fonts \
     ttf-ubuntu-mono-nerd \
     ttf-font-awesome \
-    otf-latinmodern-math
+    otf-latinmodern-math \
+    ttf-dejavu
 
 ## Sound 
 sudo pacman -S pavucontrol \

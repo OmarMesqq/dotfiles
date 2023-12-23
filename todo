@@ -1,3 +1,4 @@
 journald.conf
 makepkg.conf 
 pacman.conf
+fstab - noatime and tmp tweaks
