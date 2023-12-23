@@ -51,16 +51,12 @@ sudo pacman -S noto-fonts-emoji \
     ttf-font-awesome \
     otf-latinmodern-math
 
-## Some more tools 
-sudo pacman -S bind \
-    inetutils \
-    whois \
-    unzip \
-    p7zip \
-    docker \
-    docker-buildx \
-    libguestfs \
-    qemu-desktop
+## Sound 
+sudo pacman -S pavucontrol \
+    pipewire-alsa \
+    pipewire \
+    pipewire-pulse \
+    pipewire-jack 
 
 sudo systemctl enable docker.service
 
@@ -74,13 +70,17 @@ sudo pacman -S i3lock \
     xorg-xrandr \
     xorg-xbacklight
 
-## Sound 
-sudo pacman -S pavucontrol \
-    pipewire-alsa \
-    pipewire \
-    pipewire-pulse \
-    pipewire-jack 
-
+## Some more tools 
+sudo pacman -S bind \
+    inetutils \
+    whois \
+    unzip \
+    p7zip \
+    docker \
+    docker-buildx \
+    libguestfs \
+    qemu-desktop \
+    android-tools
 
 sudo pacman -S zathura \
     zathura-pdf-mupdf \
