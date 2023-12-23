@@ -167,17 +167,17 @@ bindsym $mod+r mode "resize"
 exec setxkbmap br
 bindsym $mod+n exec setxkbmap br
 exec polybar --config=~/.config/polybar/config.ini example 
-exec feh --bg-scale ~/Images/wp.webp
+exec --no-startup-id picom -b
+exec feh --bg-scale ~/Pictures/NewYorkMovie_EdwardHopper.jpg
 default_border none 
 default_floating_border none
 
 bindsym Mod1+1 exec firefox 
-
 bindsym Mod1+2 exec alacritty -e ranger 
-
-bindsym Mod1+3 exec firefox --private-window 
-
+bindsym Mod1+3 exec chromium 
 bindsym Mod1+4 exec code
+bindsym Mod1+5 exec slack
+
 
 bindsym Mod1+Shift+p exec sudo systemctl poweroff 
 bindsym Mod1+Shift+r exec sudo systemctl reboot
@@ -187,10 +187,12 @@ smart_gaps on
 gaps inner 2
 gaps outer 0
 
-for_window [class="Alacritty" instance="Alacritty"] floating enable
+#for_window [class="Alacritty" instance="Alacritty"] floating enable
 for_window [class="^.*"] border pixel 0
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="firefox" instance="Browser"] floating enable
 
-#bindsym XF86MonBrightnessUp exec /home/omar/scripts/brightness_control 200  
-#bindsym XF86MonBrightnessDown exec /home/omar/scripts/brightness_control.sh -200
+bindsym XF86MonBrightnessUp exec ~/scripts/adjust_brightness.sh up 
+bindsym XF86MonBrightnessDown exec ~/scripts/adjust_brightness.sh down 
+bindsym Mod1+l exec i3lock
+
