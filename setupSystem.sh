@@ -202,3 +202,8 @@ fi
 
 cd ~
 rm -rf ~/kloak_build
+
+
+# Symlinking standard download location to external HD
+ln -s /home/$(whoami)/ehd/downloads ~/Downloads
+
