@@ -17,5 +17,4 @@ set mouse=a
 
 "colorscheme elflord
 
-" For compiling LaTeX documents
-map çç :!pdflatex % \<CR>
+map çç :!pdflatex % <CR>
