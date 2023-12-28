@@ -103,7 +103,10 @@ sudo pacman -S code \
     rust-src \
     tcl \
     tk \
-    typescript
+    typescript \ 
+    gdb \
+    clang \ 
+    llvm
 
 set -e
 # Configuration files
