@@ -12,5 +12,4 @@ lvm2    # Laptop
 dhcpcd 
 iwd
 
-vim 
 git 
