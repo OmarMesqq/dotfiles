@@ -2,10 +2,18 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-# cd and auto ls
+function ranger_cd
+    ranger --choosedir=/tmp/rangerdir $argv
+    if test -e /tmp/rangerdir
+        set DIR (cat /tmp/rangerdir)
+        cl $DIR
+        rm -f /tmp/rangerdir
+    end
+end
+
 function cl
-   cd $argv
-   ls  
+        cd $argv
+        ls
 end
 
 # Prompt
@@ -36,9 +44,14 @@ end
 
 export LESSHISTFILE=-
 export TERM="xterm-256color"
-alias vi='vim'
+export VISUAL=nvim
+export EDITOR=nvim
+export RANGER_LOAD_DEFAULT_RC="FALSE"
+
+alias vi='nvim'
+alias vim='nvim'
 alias fs='killall stremio && killall node'
 alias ..='cl ..'
-alias r='ranger'
+alias r='ranger_cd'
 alias c='clear'
 alias la='ls -A'
