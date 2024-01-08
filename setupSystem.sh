@@ -103,18 +103,22 @@ sudo pacman -S code \
     rust-src \
     tcl \
     tk \
-    typescript \ 
+    typescript \
     gdb \
-    clang \ 
-    llvm
+    clang \
+    llvm \
+    xclip \
+    neovim
 
 set -e
 # Configuration files
 mkdir -p ~/.config/fish 
+mkdir ~/.config/ranger
 cp bashrc ~/.bashrc
 cp config.fish ~/.config/fish
 cp xorg/xinitrc ~/.xinitrc
 cp xorg/xserverrc ~/.xserverrc
+cp ranger/* ~/.config/ranger
 
 mkdir ~/scripts 
 cp scripts/* ~/scripts 
@@ -150,7 +154,6 @@ else
 fi
 
 # AUR packages 
-
 mkdir ~/AUR
 cd ~/AUR
 
@@ -208,5 +211,5 @@ rm -rf ~/kloak_build
 
 
 # Symlinking standard download location to external HD
-ln -s /home/$(whoami)/ehd/downloads ~/Downloads
+ln -s /home/$(whoami)/j/downloads ~/Downloads
 
