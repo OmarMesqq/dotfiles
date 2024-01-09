@@ -42,7 +42,8 @@ sudo pacman -S xorg-server \
     feh \
     redshift \
     lxappearance \
-    gnome-themes-extra
+    gnome-themes-extra \
+    numlockx
 
 ## Fonts 
 sudo pacman -S noto-fonts-emoji \
@@ -59,7 +60,6 @@ sudo pacman -S pavucontrol \
     pipewire-pulse \
     pipewire-jack 
 
-sudo systemctl enable docker.service
 
 ## Laptop?
 sudo pacman -S i3lock \
@@ -82,6 +82,8 @@ sudo pacman -S bind \
     libguestfs \
     qemu-desktop \
     android-tools
+
+sudo systemctl enable docker.service
 
 sudo pacman -S zathura \
     zathura-pdf-mupdf \
@@ -119,6 +121,7 @@ cp config.fish ~/.config/fish
 cp xorg/xinitrc ~/.xinitrc
 cp xorg/xserverrc ~/.xserverrc
 cp ranger/* ~/.config/ranger
+cp mimeapps.list ~/.config
 
 mkdir ~/scripts 
 cp scripts/* ~/scripts 
@@ -130,7 +133,7 @@ mkdir ~/.config/polybar
 mkdir ~/.config/zathura 
 mkdir ~/.config/picom
 
-cp apps/alacritty.yml ~/.config/alacritty 
+cp apps/alacritty.toml ~/.config/alacritty 
 cp apps/vimrc ~/.vimrc
 cp apps/wgetrc ~/.wgetrc
 cp apps/zathurarc ~/.config/zathura 
