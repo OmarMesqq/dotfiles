@@ -47,9 +47,13 @@ export TERM="xterm-256color"
 export VISUAL=nvim
 export EDITOR=nvim
 export RANGER_LOAD_DEFAULT_RC="FALSE"
+export GEM_HOME="~/.gem"
+
 
 alias vi='nvim'
 alias vim='nvim'
+alias nv='nvim' 
+alias gc='git clone'
 alias fs='killall stremio && killall node'
 alias ..='cl ..'
 alias r='ranger_cd'
