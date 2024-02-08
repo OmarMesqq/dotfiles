@@ -43,7 +43,8 @@ sudo pacman -S xorg-server \
     redshift \
     lxappearance \
     gnome-themes-extra \
-    numlockx
+    numlockx \
+    scrot
 
 ## Fonts 
 sudo pacman -S noto-fonts-emoji \
@@ -87,11 +88,13 @@ sudo systemctl enable docker.service
 
 sudo pacman -S zathura \
     zathura-pdf-mupdf \
-    firefox
+    firefox \
+    code \
+    neovim \
+    xclip
 
 ## Install programming languages/tools? 
-sudo pacman -S code \
-    cmake \
+sudo pacman -S cmake \
     delve   \
     ghc \
     ghc-static \
@@ -109,8 +112,6 @@ sudo pacman -S code \
     gdb \
     clang \
     llvm \
-    xclip \
-    neovim
 
 set -e
 # Configuration files
