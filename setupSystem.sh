@@ -217,3 +217,11 @@ rm -rf ~/kloak_build
 # Symlinking standard download location to external HD
 ln -s /home/$(whoami)/j/downloads ~/Downloads
 
+# Emscripten
+mkdir -p /home/$(whoami)/.emsdk
+git clone https://github.com/emscripten-core/emsdk.git .emsdk
+cd .emsdk
+./emsdk install latest
+./emsdk activate latest
+source ./emsdk_env.sh
+
