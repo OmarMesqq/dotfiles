@@ -202,6 +202,7 @@ mkdir ~/.config/polybar
 mkdir ~/.config/zathura 
 mkdir ~/.config/picom
 
+cp gitconfig ~/.gitconfig
 cp apps/alacritty.toml ~/.config/alacritty 
 cp apps/vimrc ~/.vimrc
 cp apps/wgetrc ~/.wgetrc
