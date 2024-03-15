@@ -242,3 +242,4 @@ install_aur_package "Slack" "slack-desktop"
 
 install_kloak
 install_emscripten
+curl https://get.volta.sh | bash
