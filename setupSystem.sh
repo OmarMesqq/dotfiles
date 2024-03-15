@@ -1,36 +1,130 @@
 #!/bin/sh
 
-# Firstly, update and upgrade system
+IS_LAPTOP=""
+
+
+install_packages() {
+    echo -e "\e[32mPackages to be installed:\e[0m"
+    echo "$@"
+
+    read -p "Do you want to install these packages? (y for yes, any other key for no): " choice
+
+    if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
+        sudo pacman -S $@
+    else
+        echo "Installation cancelled."
+    fi
+}
+
+
+install_basic_packages() {
+    install_packages openssh firewalld fish man-db pacman-contrib ranger
+
+    sudo systemctl enable firewalld.service
+    sudo systemctl start firewalld.service
+
+    wireless_interface=$(ip link | awk '/^[0-9]+: wl|^[0-9]+: wlan/ {print $2}' | sed 's/://')
+
+    if [ -n "$wireless_interface" ]; then
+        sudo firewall-cmd --zone=public --change-interface=$wireless_interface
+        ## Disable SSH server allowance
+        sudo firewall-cmd --zone=public --remove-service ssh
+        sudo firewall-cmd --runtime-to-permanent
+        sudo systemctl restart firewalld.service
+    else
+        echo "No wireless interface found. NOT CONFIGURING FIREWALL"
+    fi
+
+    sudo systemctl enable fstrim.timer
+    sudo systemctl enable paccache.timer
+}
+
+
+ask_laptop_status() {
+    read -p "Are you on a laptop? (y/Y for laptop, any other key for desktop): " user_choice
+
+    user_choice=$(echo "$user_choice" | tr '[:upper:]' '[:lower:]')
+
+    if [ "$user_choice" = "y" ]; then
+        IS_LAPTOP="true"
+    else
+        IS_LAPTOP="false"
+    fi
+}
+
+
+install_aur_package() {
+    echo "Install $1? (y/Y or any other key for no)"
+    read -p "Enter your choice: " package_choice
+    package_choice=$(echo "$package_choice" | tr '[:upper:]' '[:lower:]')
+
+    if [ "$package_choice" = "y" ]; then
+        git clone "https://aur.archlinux.org/$2.git"
+        cd "$2"
+        makepkg -sric 
+        cd ..
+    fi 
+}
+
+
+install_kloak() {
+    echo "Do you want to install Kloak? (y/Y for yes, any other key for no)"
+    read -p "Enter your choice: " kloak_choice
+    kloak_choice=$(echo "$kloak_choice" | tr '[:upper:]' '[:lower:]')
+
+    if [ "$kloak_choice" = "y" ]; then
+        echo "Installing Kloak"
+        sudo pacman -S libsodium
+        mkdir -p ~/kloak_build
+        cd ~/kloak_build
+        git clone https://github.com/vmonaco/kloak .
+        make all
+
+        if [ -f kloak ] && [ -f eventcap ]; then
+            sudo cp kloak /usr/sbin/kloak
+            sudo cp eventcap /usr/sbin/eventcap
+            sudo cp lib/systemd/system/kloak.service /etc/systemd/system
+            sudo systemctl enable kloak.service
+            sudo systemctl start kloak.service
+            echo "Kloak installed and enabled."
+        else
+            echo "Kloak build failed. Not installed."
+        fi
+
+        cd ~
+        rm -rf ~/kloak_build
+    else
+        echo "Kloak installation skipped."
+    fi
+}
+
+install_emscripten() {
+    echo "Install Emscripten? (y/Y for yes, any other key for no)"
+    read -p "Enter your choice: " emscripten_choice
+    emscripten_choice=$(echo "$emscripten_choice" | tr '[:upper:]' '[:lower:]')
+
+    if [ "$emscripten_choice" = "y" ]; then 
+        # Emscripten installation
+        mkdir -p /home/$(whoami)/.emsdk
+        git clone https://github.com/emscripten-core/emsdk.git .emsdk
+        cd .emsdk
+        ./emsdk install latest
+        ./emsdk activate latest
+        source ./emsdk_env.sh
+    else
+        echo "Skipping Emscripten installation."
+    fi
+}
+
+
+
+# Start setup
 sudo pacman -Syu 
+ask_laptop_status
+install_basic_packages
 
-# Basic services and packages
-sudo pacman -S openssh firewalld \
-    fish \
-    man-db \
-    pacman-contrib \
-    ranger
 
-sudo systemctl enable firewalld.service
-sudo systemctl start firewalld.service
-
-wireless_interface=$(ip link | awk '/^[0-9]+: wl|^[0-9]+: wlan/ {print $2}' | sed 's/://')
-
-if [ -n "$wireless_interface" ]; then 
-    echo "Found a wireless Interface: $wireless_interface"
-    sudo firewall-cmd --zone=public --change-interface=$wireless_interface
-    ## Disable SSH server allowance
-    sudo firewall-cmd --zone=public --remove-service ssh
-    sudo firewall-cmd --runtime-to-permanent
-    sudo systemctl restart firewalld.service
-else 
-    echo "No wireless interface found. NOT CONFIGURING FIREWALL"
-fi
-
-sudo systemctl enable fstrim.timer
-sudo systemctl enable paccache.timer
-
-## GUI setup 
-sudo pacman -S xorg-server \
+install_packages xorg-server \
     xorg-xinit \
     xorg-xhost \
     alacritty \
@@ -46,34 +140,22 @@ sudo pacman -S xorg-server \
     numlockx \
     scrot
 
-## Fonts 
-sudo pacman -S noto-fonts-emoji \
+install_packages noto-fonts-emoji \
     adobe-source-han-sans-otc-fonts \
     ttf-ubuntu-mono-nerd \
     ttf-font-awesome \
     otf-latinmodern-math \
     ttf-dejavu
 
-## Sound 
-sudo pacman -S pavucontrol \
+
+install_packages pavucontrol \
     pipewire-alsa \
     pipewire \
     pipewire-pulse \
     pipewire-jack 
 
 
-## Laptop?
-sudo pacman -S i3lock \
-    sof-firmware \
-    acpi \
-    bluez \
-    bluez-utils \
-    rtkit \
-    xorg-xrandr \
-    xorg-xbacklight
-
-## Some more tools 
-sudo pacman -S bind \
+install_packages bind \
     inetutils \
     whois \
     unzip \
@@ -86,35 +168,21 @@ sudo pacman -S bind \
 
 sudo systemctl enable docker.service
 
-sudo pacman -S zathura \
+install_packages zathura \
     zathura-pdf-mupdf \
     firefox \
-    code \
     neovim \
     xclip
 
-## Install programming languages/tools? 
-sudo pacman -S cmake \
-    delve   \
-    ghc \
-    ghc-static \
-    go \
-    go-tools \
-    gopls \
-    ocaml \
-    npm \
-    re2c \
-    rust \
-    rust-src \
-    tcl \
-    tk \
-    typescript \
-    gdb \
-    clang \
-    llvm \
+install_packages code
+install_packages go go-tools gopls delve
+install_packages ghc ghc-static
+install_packages rust rust-src
+install_packages cmake gdb clang llvm re2c
+install_packages tcl tk
 
+# Home folder configuration
 set -e
-# Configuration files
 mkdir -p ~/.config/fish 
 mkdir ~/.config/ranger
 cp bashrc ~/.bashrc
@@ -139,18 +207,23 @@ cp apps/vimrc ~/.vimrc
 cp apps/wgetrc ~/.wgetrc
 cp apps/zathurarc ~/.config/zathura 
 
-echo "Are you on a laptop? (y/Y for laptop, any other key for desktop)"
-read -p "Enter your choice: " user_choice
 
-is_laptop=$(echo "$user_choice" | tr '[:upper:]' '[:lower:]')
+if [ "$IS_LAPTOP" = "true" ]; then
+    install_packages i3lock \
+    sof-firmware \
+    acpi \
+    bluez \
+    bluez-utils \
+    rtkit \
+    xorg-xrandr \
+    xorg-xbacklight
 
-if [ "$is_laptop" ="y" ]; then 
     sudo cp apps/laptop/40-libinput.conf /etc/X11/xorg.conf.d
     cp apps/laptop/config ~/.config/i3
     cp apps/laptop/config.conf ~/.config/neofetch
     cp apps/laptop/config.ini ~/.config/polybar
     cp apps/laptop/picom.conf ~/.config/picom
-else 
+else
     cp apps/desktop/config ~/.config/i3
     cp apps/desktop/config.conf ~/.config/neofetch
     cp apps/desktop/config.ini ~/.config/polybar
@@ -161,67 +234,10 @@ fi
 mkdir ~/AUR
 cd ~/AUR
 
-git clone https://aur.archlinux.org/code-features.git
-cd code-features
-makepkg -sric 
-cd ..
+install_aur_package "Code Features" "code-features"
+install_aur_package "Code Marketplace" "code-marketplace"
+install_aur_package "Stremio" "stremio-beta"
+install_aur_package "Slack" "slack-desktop"
 
-git clone https://aur.archlinux.org/code-marketplace.git
-cd code-marketplace 
-makepkg -sric 
-cd .. 
-
-echo "Install Stremio? (y/Y or any other key for no)"
-read -p "Enter your choice: " stremio_choice
-stremio_choice=$(echo "$stremio_choice" | tr '[:upper:]' '[:lower:]')
-
-if [ "$stremio_choice" = "y" ]; then 
-    git clone https://aur.archlinux.org/stremio-beta.git
-    cd stremio-beta
-    makepkg -sric 
-    cd ..
-fi 
-
-echo "Install Slack? (y/Y or any other key for no)"
-read -p "Enter your choice: " slack_choice
-slack_choice=$(echo "$slack_choice" | tr '[:upper:]' '[:lower:]')
-
-if [ "$slack_choice" = "y" ]; then 
-    git clone https://aur.archlinux.org/slack-desktop.git
-    cd slack-desktop
-    makepkg -sric 
-    cd ..
-fi 
-
-# Installing kloak
-sudo pacman -S libsodium
-mkdir -p ~/kloak_build
-cd ~/kloak_build
-git clone https://github.com/vmonaco/kloak .
-make all
-
-if [ -f kloak ] && [ -f eventcap ]; then
-    sudo cp kloak /usr/sbin/kloak
-    sudo cp eventcap /usr/sbin/eventcap
-    sudo cp lib/systemd/system/kloak.service /etc/systemd/system
-    sudo systemctl enable kloak.service
-    sudo systemctl start kloak.service
-else
-    echo "Kloak build failed. Not installed."
-fi
-
-cd ~
-rm -rf ~/kloak_build
-
-
-# Symlinking standard download location to external HD
-ln -s /home/$(whoami)/j/downloads ~/Downloads
-
-# Emscripten
-mkdir -p /home/$(whoami)/.emsdk
-git clone https://github.com/emscripten-core/emsdk.git .emsdk
-cd .emsdk
-./emsdk install latest
-./emsdk activate latest
-source ./emsdk_env.sh
-
+install_kloak
+install_emscripten

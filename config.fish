@@ -47,7 +47,7 @@ export TERM="xterm-256color"
 export VISUAL=nvim
 export EDITOR=nvim
 export RANGER_LOAD_DEFAULT_RC="FALSE"
-export GEM_HOME="~/.gem"
+#export GEM_HOME="~/.gem"
 
 
 alias vi='nvim'
