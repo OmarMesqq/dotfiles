@@ -44,6 +44,11 @@ function fish_prompt
     echo -n ' $ '
 end
 
+set -x ANDROID_HOME $HOME/.android/Sdk/
+set -x PATH $PATH $ANDROID_HOME/platform-tools
+set -x PATH $PATH $ANDROID_HOME/emulator
+
+
 export LESSHISTFILE=-
 export TERM="xterm-256color"
 export VISUAL=nvim

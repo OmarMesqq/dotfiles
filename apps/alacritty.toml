@@ -1,5 +1,6 @@
-import = [ "~/.config/alacritty/themes/themes/kanagawa_wave.toml" ]
-#import = [ "~/.config/alacritty/themes/themes/alabaster.toml" ]
+import = [ "~/.config/alacritty/themes/themes/google.toml" ]
+#import = [ "~/.config/alacritty/themes/themes/ashes_light.toml" ]
+
 
 [cursor.style]
 blinking = "Always"

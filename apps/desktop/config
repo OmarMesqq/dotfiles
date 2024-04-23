@@ -167,19 +167,19 @@ bindsym $mod+r mode "resize"
 exec setxkbmap br
 bindsym $mod+n exec setxkbmap br
 exec --no-startup-id picom -b
-exec feh --bg-scale /home/omar/wallpaper/ls.png
+exec feh --bg-scale /home/omar/Pictures/urban_life.jpeg
 exec polybar example 
+exec syncthing serve
 
 default_border none 
 default_floating_border none
 
 bindsym Mod1+1 exec firefox 
-
 bindsym Mod1+2 exec alacritty -e ranger 
-
 bindsym Mod1+3 exec firefox --private-window 
-
-bindsym Mod1+4 exec code
+bindsym Mod1+4 exec obsidian 
+bindsym Mod1+5 exec stremio
+bindsym Mod1+6 exec chromium 
 
 
 bindsym XF86AudioPlay exec playerctl play-pause
