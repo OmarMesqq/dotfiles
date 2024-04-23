@@ -162,9 +162,10 @@ install_packages bind \
     p7zip \
     docker \
     docker-buildx \
-    libguestfs \
     qemu-desktop \
-    android-tools
+    android-tools \
+    bmon \
+    htop
 
 sudo systemctl enable docker.service
 
@@ -174,11 +175,12 @@ install_packages zathura \
     neovim \
     xclip
 
+install_packages obsidian syncthing texlive
 install_packages code
 install_packages go go-tools gopls delve
 install_packages ghc ghc-static
 install_packages rust rust-src
-install_packages cmake gdb clang llvm re2c
+install_packages cmake gdb
 install_packages tcl tk
 
 # Home folder configuration
