@@ -203,13 +203,14 @@ mkdir ~/.config/neofetch
 mkdir ~/.config/polybar
 mkdir ~/.config/zathura 
 mkdir ~/.config/picom
+mkdir ~/.config/nvim
 
 cp gitconfig ~/.gitconfig
 cp apps/alacritty.toml ~/.config/alacritty 
 cp apps/vimrc ~/.vimrc
 cp apps/wgetrc ~/.wgetrc
 cp apps/zathurarc ~/.config/zathura 
-
+cp apps/init.lua ~/.config/nvim
 
 if [ "$IS_LAPTOP" = "true" ]; then
     install_packages i3lock \
