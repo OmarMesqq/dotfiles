@@ -23,3 +23,26 @@ vim.o.foldenable = true
 
 vim.api.nvim_set_keymap('n', 'çç', ':!pdflatex %<CR>', {noremap = true})
 
+-- For RN development
+
+-- Set up swap file
+vim.opt.swapfile = true
+vim.opt.directory = '~/.config/nvim/tmp//'
+
+-- Set up backup
+vim.opt.backup = true
+vim.opt.backupdir = '~/.config/nvim/tmp//'
+
+-- Enable write backup
+vim.opt.writebackup = true
+
+-- Set up undo files
+vim.opt.undofile = true
+vim.opt.undodir = '~/.config/nvim/tmp//'
+
+-- Set backupcopy to yes for compatibility with file watchers
+vim.opt.backupcopy = 'yes'
+
+-- Control swap file creation to be delayed
+vim.opt.updatecount = 100
+
