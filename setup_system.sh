@@ -168,6 +168,7 @@ install_packages bind \
     htop
 
 sudo systemctl enable docker.service
+sudo gpasswd -a $(whoami) docker 
 
 install_packages zathura \
     zathura-pdf-mupdf \
