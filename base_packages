@@ -7,9 +7,12 @@ intel-ucode
 grub
 efibootmgr
 
-lvm2    # Laptop
-
 dhcpcd 
 iwd
 
+neovim
+
 git 
+
+lvm2    # Laptop
+

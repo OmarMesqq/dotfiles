@@ -173,7 +173,6 @@ sudo gpasswd -a $(whoami) docker
 install_packages zathura \
     zathura-pdf-mupdf \
     firefox \
-    neovim \
     xclip
 
 install_packages obsidian syncthing texlive
