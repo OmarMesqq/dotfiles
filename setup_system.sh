@@ -124,28 +124,27 @@ ask_laptop_status
 install_basic_packages
 
 
-install_packages xorg-server \
-    xorg-xinit \
-    xorg-xhost \
-    alacritty \
-    picom \
-    polybar \
-    i3-wm \
-    w3m \
-    dmenu \
-    feh \
-    redshift \
-    lxappearance \
-    gnome-themes-extra \
-    numlockx \
-    scrot
+install_packages alacritty \
+    qt5-wayland \
+    qt6-wayland \
+    polkit \
+    waybar \
+    sway \
+    ueberzug
+    wmenu \
+    wl-clipboard \
+    swaybg \
+    gammastep \
+    grim \
+    slurp
 
 install_packages noto-fonts-emoji \
     adobe-source-han-sans-otc-fonts \
     ttf-ubuntu-mono-nerd \
     ttf-font-awesome \
     otf-latinmodern-math \
-    ttf-dejavu
+    ttf-dejavu \
+    otf-font-awesome
 
 
 install_packages pavucontrol \
@@ -173,7 +172,6 @@ sudo gpasswd -a $(whoami) docker
 install_packages zathura \
     zathura-pdf-mupdf \
     firefox \
-    xclip
 
 install_packages obsidian syncthing texlive
 install_packages code
