@@ -130,7 +130,7 @@ install_packages alacritty \
     polkit \
     waybar \
     sway \
-    ueberzug
+    ueberzug \
     wmenu \
     wl-clipboard \
     swaybg \
@@ -187,8 +187,6 @@ mkdir -p ~/.config/fish
 mkdir ~/.config/ranger
 cp bashrc ~/.bashrc
 cp config.fish ~/.config/fish
-cp xorg/xinitrc ~/.xinitrc
-cp xorg/xserverrc ~/.xserverrc
 cp ranger/* ~/.config/ranger
 cp mimeapps.list ~/.config
 
@@ -196,16 +194,14 @@ mkdir ~/scripts
 cp scripts/* ~/scripts 
 
 mkdir ~/.config/alacritty 
-mkdir ~/.config/i3
+mkdir ~/.config/sway
 mkdir ~/.config/neofetch 
-mkdir ~/.config/polybar
+mkdir ~/.config/waybar
 mkdir ~/.config/zathura 
-mkdir ~/.config/picom
 mkdir ~/.config/nvim
 
 cp gitconfig ~/.gitconfig
 cp apps/alacritty.toml ~/.config/alacritty 
-cp apps/vimrc ~/.vimrc
 cp apps/wgetrc ~/.wgetrc
 cp apps/zathurarc ~/.config/zathura 
 cp apps/init.lua ~/.config/nvim
@@ -217,19 +213,14 @@ if [ "$IS_LAPTOP" = "true" ]; then
     bluez \
     bluez-utils \
     rtkit \
-    xorg-xrandr \
-    xorg-xbacklight
 
-    sudo cp apps/laptop/40-libinput.conf /etc/X11/xorg.conf.d
-    cp apps/laptop/config ~/.config/i3
+    cp apps/laptop/config ~/.config/sway
     cp apps/laptop/config.conf ~/.config/neofetch
-    cp apps/laptop/config.ini ~/.config/polybar
-    cp apps/laptop/picom.conf ~/.config/picom
+    cp apps/laptop/config.jsonc ~/.config/waybar
 else
-    cp apps/desktop/config ~/.config/i3
+    cp apps/desktop/config ~/.config/sway
     cp apps/desktop/config.conf ~/.config/neofetch
-    cp apps/desktop/config.ini ~/.config/polybar
-    cp apps/desktop/picom.conf ~/.config/picom
+    cp apps/desktop/config.jsonc ~/.config/waybar
 fi
 
 # AUR packages 
