@@ -149,7 +149,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec swaybg -i /home/omar/Pictures/The_Path.jpg
+exec swaybg -i /home/omar/Pictures/whatsInside.jpeg
 exec waybar 
 exec syncthing serve
 
@@ -179,13 +179,14 @@ smart_gaps on
 gaps inner 2
 gaps outer 0
 
-#for_window [class="Alacritty" instance="Alacritty"] floating enable
 for_window [class="^.*"] border pixel 0
-for_window [class="URxvt"] floating enable 
-for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
-for_window [class="firefox" instance="Browser"] floating enable
 for_window [class="Tor Browser" instance="Browser"] floating enable
 for_window [class="firefox" instance="firefox"] resize set 800 600
+
+set $opacity 0.7
+for_window [app_id="Alacritty"] opacity 0.8
+for_window [title="About Mozilla Firefox" app_id="firefox"] floating enable
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 
 
 set $LANG en_US.UTF-8
