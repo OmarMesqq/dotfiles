@@ -4,5 +4,5 @@
 uuid=$(uuidgen | tr -d -)
 
 # Capture the screenshot using scrot with the generated UUID as the filename
-scrot ~/Pictures/"${uuid}.png"
+grim ~/Pictures/"${uuid}.png"
 
