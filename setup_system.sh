@@ -198,13 +198,14 @@ mkdir ~/.config/sway
 mkdir ~/.config/neofetch 
 mkdir ~/.config/waybar
 mkdir ~/.config/zathura 
-mkdir ~/.config/nvim
+mkdir -p ~/.config/nvim/lua
 
 cp gitconfig ~/.gitconfig
 cp apps/alacritty.toml ~/.config/alacritty 
 cp apps/wgetrc ~/.wgetrc
 cp apps/zathurarc ~/.config/zathura 
-cp apps/init.lua ~/.config/nvim
+cp nvim/init.lua ~/.config/nvim
+cp nvim/lua/plugins.lua ~/.config/nvim/lua
 
 if [ "$IS_LAPTOP" = "true" ]; then
     install_packages i3lock \
