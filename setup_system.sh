@@ -136,7 +136,8 @@ install_packages alacritty \
     swaybg \
     gammastep \
     grim \
-    slurp
+    slurp \
+    xorg-xwayland
 
 install_packages noto-fonts-emoji \
     adobe-source-han-sans-otc-fonts \

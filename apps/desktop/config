@@ -149,7 +149,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec swaybg -i /home/omar/Pictures/whatsInside.jpeg
+exec swaybg -i /home/omar/Pictures/splash.jpg
 exec waybar 
 exec syncthing serve
 
@@ -159,10 +159,9 @@ default_floating_border none
 bindsym Mod1+1 exec firefox 
 bindsym Mod1+2 exec alacritty -e ranger 
 bindsym Mod1+3 exec firefox --private-window 
-bindsym Mod1+4 exec OBSIDIAN_USE_WAYLAND=1 obsidian -enable-features=UseOzonePlatform -ozone-platform=wayland 
+bindsym Mod1+4 exec obsidian
 bindsym Mod1+5 exec stremio
-bindsym Mod1+6 exec QT_QPA_PLATFORM=wayland chromium -enable-features=UseOzonePlatform --ozone-platform=wayland 
-
+bindsym Mod1+6 exec chromium
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym F11 exec playerctl previous 
@@ -200,4 +199,4 @@ input * {
         xkb_layout "br"
 }
 
-xwayland disable
+#xwayland disable
