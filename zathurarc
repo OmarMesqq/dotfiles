@@ -1,0 +1,7 @@
+# s for fitting to the width of the document 
+# r for rotating documents 
+# d for two-page view
+
+#set sandbox strict
+set guioptions ""
+map i recolor 

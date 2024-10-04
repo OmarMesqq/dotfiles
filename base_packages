@@ -1,0 +1,12 @@
+base
+base-devel
+linux
+linux-firmware
+amd-ucode
+grub
+efibootmgr
+dhcpcd 
+iwd
+neovim
+git 
+
