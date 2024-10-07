@@ -2,6 +2,6 @@
 # r for rotating documents 
 # d for two-page view
 
-#set sandbox strict
+set sandbox strict
 set guioptions ""
 map i recolor 
