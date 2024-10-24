@@ -4,6 +4,7 @@
    syntax on
    filetype plugin on
    filetype indent on
+   set expandtab sw=4 sts=4
  ]]
 -- Ctrl+V for visual block
 vim.o.cursorline = true
