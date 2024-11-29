@@ -1,4 +1,3 @@
-
 -- General Vim configurations
  vim.cmd [[
    syntax on
@@ -23,7 +22,6 @@ vim.opt.clipboard = "unnamedplus"
 vim.o.foldmethod = 'syntax'
 vim.o.foldlevel = 99
 vim.o.foldenable = true
-
 
 -- KEYBINDS 
 vim.g.mapleader = " "  
@@ -53,8 +51,8 @@ require('bufferline').setup {
       icon = '▎',
       style = 'icon',
     },
-    buffer_close_icon = '',
-    modified_icon = '●',
+    buffer_close_icon = '',
+    modified_icon = 'M',
     close_icon = '',
     left_trunc_marker = '',
     right_trunc_marker = '',
