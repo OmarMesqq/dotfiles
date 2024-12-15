@@ -72,7 +72,13 @@ fi
 
 # Case 3 (worst case): need to hit the API as to update both and set the new wallpaper
 DOT_ENV=$(cat .env)
+
+#TODO: be more defensive
+# Set the field delimiter to '=' for the awk command. This is common in .env files
+# Only match lines starting with the NASA api key and print the second field (after the '=', i.e. the key itself)
 NASA_API_KEY_LINE=$(echo "$DOT_ENV" | awk -F= '/NASA_API_KEY=/ {print $2}')
+# Match a double quote ("), any character(s) other than double quote n times (*) and the final double quote
+# Then, strip the double quotes using echo
 API_KEY=$(echo "$NASA_API_KEY_LINE" | grep -E '"[^"]*"' | xargs echo)
 
 NASA_API_URL="https://api.nasa.gov/planetary/apod"
@@ -86,15 +92,8 @@ metadata=$(curl -s "$NASA_API_ENDPOINT")
 echo "$metadata" > "$METADATA_IN_RAM"
 cp "$METADATA_IN_RAM" "$METADATA_IN_DISK"
 
-# Extract the image URL, prioritizing 'hdurl' if available
+# Extract the image URL from the JSON prioritizing the HD URL
 image_url=$(echo "$metadata" | jq -r '.hdurl // .url')
-
-#TODO: maybe unneeded
-# Validate URL
-if [[ ! "$image_url" =~ \.(jpg|jpeg|png)$ ]]; then
-  echo "NASA Image of the Day is not a valid image URL."
-  exit 1
-fi
 
 # Download the wallpaper, cache it in disk and set it
 curl -s -o "$WALLPAPER_IN_RAM" "$image_url"
