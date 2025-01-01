@@ -2,15 +2,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-function ranger_cd
-    ranger --choosedir=/tmp/rangerdir $argv
-    if test -e /tmp/rangerdir
-        set DIR (cat /tmp/rangerdir)
-        cl $DIR
-        rm -f /tmp/rangerdir
-    end
-end
-
 function cl
         cd $argv
         ls
@@ -52,19 +43,31 @@ export LESSHISTFILE=-
 export TERM="xterm-256color"
 export VISUAL=nvim
 export EDITOR=nvim
-export RANGER_LOAD_DEFAULT_RC="FALSE"
-
 
 alias vi='nvim'
 alias vim='nvim'
 alias nv='nvim' 
 alias gc='git clone'
 alias ..='cl ..'
-alias r='ranger_cd'
-alias c='clear'
 alias la='ls -A'
 alias gs='git status'
 alias gp='git pull'
 alias co='git checkout'
-alias autoremove='sudo pacman -Rcns $(pacman -Qdtq)'
-alias unziptemp='set -l temp_dir (mktemp -d); mv $argv[1] $temp_dir; unzip $temp_dir/(basename $argv[1]) -d $temp_dir; echo "Extracted to $temp_dir"'
+alias docs='cl Documents'
+
+# Update terminal title to include user@host:current directory
+function update_terminal_title --on-event fish_prompt
+    echo -ne "\e]0; (whoami)@(hostname): (prompt_pwd)\a"
+end
+
+# Adjust LINES and COLUMNS after resizing the terminal
+function check_window_size --on-event fish_prompt
+    set -l term_dims (stty size | string split " ")
+    set -gx LINES $term_dims[1]
+    set -gx COLUMNS $term_dims[2]
+end
+
+# Bind the check_window_size function to trigger after every command
+function fish_postexec --on-event fish_postexec
+    check_window_size
+end

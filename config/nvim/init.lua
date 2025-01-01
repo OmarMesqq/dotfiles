@@ -22,13 +22,14 @@ vim.opt.clipboard = "unnamedplus"
 vim.o.foldmethod = 'syntax'
 vim.o.foldlevel = 99
 vim.o.foldenable = true
+-- 
+vim.o.termguicolors = true
+vim.cmd [[colorscheme desert]] -- Default scheme
 
 -- KEYBINDS 
 vim.g.mapleader = " "  
-
 vim.api.nvim_set_keymap('n', 'çç', ':!pdflatex %<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader><Tab>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-Tab>', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true })
@@ -79,4 +80,3 @@ require('bufferline').setup {
     always_show_bufferline = true,
   }
 }
-

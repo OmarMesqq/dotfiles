@@ -1,4 +1,3 @@
-
 -- Ensure packer is installed
 local ensure_packer = function()
   local fn = vim.fn
