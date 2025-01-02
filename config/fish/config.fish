@@ -7,6 +7,16 @@ function cl
         ls
 end
 
+function extract
+    set extracted_folder $(uuidgen)
+    set extracted_folder $(string sub --length 8 $extracted_folder)
+    set extracted_folder $(string join '' "extracted_" $extracted_folder)
+    mkdir $extracted_folder
+    mv $argv[1] $extracted_folder
+    cl $extracted_folder
+    unzip $argv[1]
+end
+
 # Prompt
 function fish_prompt
     set user (whoami)
@@ -53,7 +63,7 @@ alias la='ls -A'
 alias gs='git status'
 alias gp='git pull'
 alias co='git checkout'
-alias docs='cl Documents'
+alias docs='cl ~/Documents'
 
 # Update terminal title to include user@host:current directory
 function update_terminal_title --on-event fish_prompt
