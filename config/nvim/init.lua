@@ -33,6 +33,10 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', ':NvimTreeToggle<CR>', { noremap =
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true })
+-- DiffviewOpen
+vim.api.nvim_set_keymap('n', '<C-g>', ':DiffviewOpen<CR>', { noremap = true, silent = true })
+-- DiffviewClose
+vim.api.nvim_set_keymap('n', '<C-h>', ':DiffviewClose<CR>', { noremap = true, silent = true })
 
 
 -- Packer (plugin manager) and plugins setup

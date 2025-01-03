@@ -43,5 +43,6 @@ packer.startup(function(use)
     requires = 'nvim-tree/nvim-web-devicons'
   }
   -- Add other plugins as needed
+  use "sindrets/diffview.nvim"
 end)
 
