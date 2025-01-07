@@ -1,5 +1,9 @@
 [user]
-	name = OmarMesqq
 	email = omarmsqt@gmail.com
+        name = OmarMesqq
 [init]
 	defaultBranch = main
+[rerere]
+	enabled = true
+[column]
+	ui = auto
