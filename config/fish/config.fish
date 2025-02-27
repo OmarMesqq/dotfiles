@@ -2,9 +2,22 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+set PATH $HOME/.jenv/bin $PATH
+status --is-interactive; and source (jenv init -|psub)
+
+status --is-interactive; and source (rbenv init -|psub)
+
 function cl
         cd $argv
         ls
+end
+
+function updsys 
+    sudo apt update
+    sudo apt full-upgrade
+    sudo apt autoremove
+    sudo apt autoclean
+    sudo snap refresh
 end
 
 function extract
@@ -48,7 +61,11 @@ end
 set -x ANDROID_HOME $HOME/.android/Sdk/
 set -x PATH $PATH $ANDROID_HOME/platform-tools
 set -x PATH $PATH $ANDROID_HOME/emulator
+set -x PATH $PATH $ANDROID_HOME/cmdline-tools/latest/bin/
+set -x PATH $PATH $HOME/bin
+set -x PATH $PATH $HOME/.flutter/flutter/bin
 
+export CHROME_EXECUTABLE="/snap/bin/chromium"
 export LESSHISTFILE=-
 export TERM="xterm-256color"
 export VISUAL=nvim
@@ -63,7 +80,9 @@ alias la='ls -A'
 alias gs='git status'
 alias gp='git pull'
 alias co='git checkout'
-alias docs='cl ~/Documents'
+alias macos='cl /home/omar/hdd/vm/MacOS/OSX-KVM && ./OpenCore-Boot.sh'
+alias repos='cl /home/omar/Downloads/repos'
+alias scripts='cl /home/omar/Downloads/scripts'
 
 # Update terminal title to include user@host:current directory
 function update_terminal_title --on-event fish_prompt

@@ -7,3 +7,5 @@
 	enabled = true
 [column]
 	ui = auto
+[color]
+	ui = auto
