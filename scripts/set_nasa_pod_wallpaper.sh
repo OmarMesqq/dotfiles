@@ -1,9 +1,6 @@
 #!/bin/bash
+set -ex
 
-: '
-I am storing the image itself and its metadata in RAM for fast access as well as
-in disk so it persists across reboots during the same day
-'
 RAM_PATH="/tmp"
 WALLPAPER_IN_RAM="$RAM_PATH/nasa_wallpaper.jpg"
 METADATA_IN_RAM="$RAM_PATH/nasa_metadata.json"
@@ -39,11 +36,6 @@ if [[ -f "$METADATA_IN_DISK" ]]; then
 fi
 
 
-:'
-Given the state of the boolean variables, we create
-a logic for syncing/updating the data and setting wallpaper
-'
-
 # Case 0 (happy path): both are set and up to date
 if [[ "$existsInRam" == true && "$matchesInRam" == true && "$existsInDisk" == true && "$matchesInDisk" == true ]]; then
     swaybg -i "$WALLPAPER_IN_RAM" -m fill &
@@ -76,10 +68,10 @@ DOT_ENV=$(cat .env)
 #TODO: be more defensive
 # Set the field delimiter to '=' for the awk command. This is common in .env files
 # Only match lines starting with the NASA api key and print the second field (after the '=', i.e. the key itself)
-NASA_API_KEY_LINE=$(echo "$DOT_ENV" | awk -F= '/NASA_API_KEY=/ {print $2}')
+API_KEY=$(echo "$DOT_ENV" | awk -F= '/NASA_API_KEY=/ {print $2}')
 # Match a double quote ("), any character(s) other than double quote n times (*) and the final double quote
 # Then, strip the double quotes using echo
-API_KEY=$(echo "$NASA_API_KEY_LINE" | grep -E '"[^"]*"' | xargs echo)
+#API_KEY=$(echo "$NASA_API_KEY_LINE" | grep -E '"[^"]*"' | xargs echo)
 
 NASA_API_URL="https://api.nasa.gov/planetary/apod"
 NASA_API_ENDPOINT="${NASA_API_URL}?api_key="${API_KEY}""
