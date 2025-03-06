@@ -1,6 +1,6 @@
 [general]
-#import = [ "~/.config/alacritty/themes/themes/aura.toml" ]
-import = [ "~/.config/alacritty/themes/themes/ayu_light.toml" ]
+#import = [ "~/.config/alacritty/themes/themes/dawnfox.toml" ]
+import = [ "~/.config/alacritty/themes/themes/aura.toml" ]
 
 [cursor.style]
 blinking = "Always"
@@ -13,5 +13,5 @@ opacity = "0.7"
 size = 14.0
 
 [font.normal]
-family = "UbuntuMonoNerdFontMono"
+family = "TerminessNerdFont"
 style = "Regular"
