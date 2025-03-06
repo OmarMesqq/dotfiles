@@ -84,3 +84,5 @@ require('bufferline').setup {
     always_show_bufferline = true,
   }
 }
+
+require'lspconfig'.ts_ls.setup {}
