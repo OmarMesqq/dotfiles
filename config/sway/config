@@ -104,7 +104,7 @@ bindsym $mod+Shift+c reload
 # restart Sway 
 bindsym $mod+Shift+r restart
 # exit Sway 
-bindsym $mod+Shift+e exec ~/.custom_tools/powermenu -l
+bindsym $mod+Shift+e exec ~/.bin/powermenu -l
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -133,33 +133,31 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec swaybg -i /home/omar/Pictures/art/wallpaper.png
 exec waybar 
-exec syncthing serve
+exec ~/scripts/set_nasa_pod_wallpaper.sh
 
 default_border none 
 default_floating_border none
 
-bindsym Mod1+1 exec firefox 
+bindsym Mod1+1 exec librewolf 
 bindsym Mod1+2 exec alacritty -e ranger 
-bindsym Mod1+3 exec firefox --private-window 
-bindsym Mod1+4 exec OBSIDIAN_USE_WAYLAND=1 obsidian -enable-features=UseOzonePlatform -ozone-platform=wayland 
-bindsym Mod1+5 exec QT_QPA_PLATFORM=wayland code -enable-features=UseOzonePlatform --ozone-platform=wayland  
-bindsym Mod1+6 exec QT_QPA_PLATFORM=wayland chromium -enable-features=UseOzonePlatform --ozone-platform=wayland 
-bindsym Mod1+7 exec QT_QPA_PLATFORM=wayland stremio -enable-features=UseOzonePlatform --ozone-platform=wayland 
-bindsym Mod1+8 exec gimp 
-
+bindsym Mod1+3 exec librewolf --private-window 
+bindsym Mod1+4 exec chromium -enable-features=UseOzonePlatform --ozone-platform=wayland
+bindsym Mod1+5 exec code -enable-features=UseOzonePlatform --ozone-platform=wayland
+bindsym Mod1+6 exec stremio 
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym F11 exec playerctl previous 
 bindsym F12 exec playerctl next
-bindsym Print exec ~/scripts/screenshot_uuid.sh
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
 bindsym F8 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym F9 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 
-bindsym Mod1+Shift+p exec ~/.custom_tools/powermenu -s 
-bindsym Mod1+Shift+r exec  ~/.custom_tools/powermenu -r 
+bindsym Mod1+Shift+p exec ~/.bin/powermenu -s 
+bindsym Mod1+Shift+r exec  ~/.bin/powermenu -r 
 bindsym Mod1+r       exec python ~/scripts/temp.py
+
+bindsym $mod+d exec wmenu-run
 
 smart_gaps on
 gaps inner 2
@@ -181,8 +179,7 @@ exec_always {
 }
 
 input * {
-	xkb_layout "us"
-	xkb_variant "intl"
+	xkb_layout "br"
 }
 
 xwayland disable
