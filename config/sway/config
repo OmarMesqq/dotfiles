@@ -134,7 +134,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec waybar 
-exec ~/scripts/set_nasa_pod_wallpaper.sh
+exec bash /home/omar/scripts/set_nasa_pod_wallpaper.sh
 
 default_border none 
 default_floating_border none

@@ -1,7 +1,7 @@
 #!/bin/sh
 set -ex
 
-cp -R ~/.config/alacritty/* config/alacritty 
+cp ~/.config/alacritty/alacritty.toml config/alacritty 
 cp ~/.config/sway/config config/sway
 cp ~/.config/ranger/* config/ranger
 cp ~/.config/waybar/* config/waybar

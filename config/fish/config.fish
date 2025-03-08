@@ -5,6 +5,7 @@ end
 #set PATH $HOME/.jenv/bin $PATH
 #status --is-interactive; and source (jenv init -|psub)
 status --is-interactive; and source (rbenv init -|psub)
+pyenv init - fish | source
 
 function cl
         cd $argv
@@ -58,4 +59,4 @@ alias la='ls -A'
 alias gs='git status'
 alias gp='git pull'
 alias co='git checkout'
-
+alias r='ranger'
