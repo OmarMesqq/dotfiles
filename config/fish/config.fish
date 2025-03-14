@@ -44,6 +44,7 @@ end
 #set -x PATH $PATH $ANDROID_HOME/cmdline-tools/latest/bin/
 set -x PATH $PATH $HOME/.rbenv/shims 
 set -x PATH $PATH $HOME/.npm-global/bin 
+set -x PATH $PATH $HOME/.bin 
 
 export LESSHISTFILE=-
 export TERM="xterm-256color"

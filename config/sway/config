@@ -134,7 +134,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec waybar 
-exec bash /home/omar/scripts/set_nasa_pod_wallpaper.sh
+exec cd /home/omar/scripts/ && bash set_nasa_pod_wallpaper.sh
 
 default_border none 
 default_floating_border none
@@ -149,7 +149,7 @@ bindsym Mod1+6 exec stremio
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym F11 exec playerctl previous 
 bindsym F12 exec playerctl next
-bindsym Print exec grim -g "$(slurp)" - | wl-copy
+bindsym --release F11 exec grim -g "$(slurp)" - | wl-copy
 bindsym F8 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym F9 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 
@@ -179,7 +179,8 @@ exec_always {
 }
 
 input * {
-	xkb_layout "br"
+	xkb_layout "us"
+	xkb_variant "intl"
 }
 
 xwayland disable
