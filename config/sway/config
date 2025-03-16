@@ -147,11 +147,9 @@ bindsym Mod1+5 exec code -enable-features=UseOzonePlatform --ozone-platform=wayl
 bindsym Mod1+6 exec stremio 
 
 bindsym XF86AudioPlay exec playerctl play-pause
-bindsym F11 exec playerctl previous 
-bindsym F12 exec playerctl next
-bindsym --release F11 exec grim -g "$(slurp)" - | wl-copy
-bindsym F8 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym F9 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym --release F10 exec grim -g "$(slurp)" - | wl-copy
+bindsym F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym Insert exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 
 bindsym Mod1+Shift+p exec ~/.bin/powermenu -s 
 bindsym Mod1+Shift+r exec  ~/.bin/powermenu -r 
