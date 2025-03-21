@@ -7,6 +7,30 @@ end
 status --is-interactive; and source (rbenv init -|psub)
 pyenv init - fish | source
 
+
+function trash
+    set -l trash_dir "$HOME/.local/share/Trash/files"
+    mkdir -p "$trash_dir"
+    
+    for file in $argv
+        if test -e "$file"
+            mv "$file" "$trash_dir"/
+        else
+            echo "File '$file' not found" >&2
+        end
+    end
+end
+
+function rm --description 'Alias rm to trash, ignoring flags'
+    trash $argv
+end
+
+function restart_network
+    echo "4-1" | sudo tee /sys/bus/usb/drivers/usb/unbind
+    sleep 2
+    echo "4-1" | sudo tee /sys/bus/usb/drivers/usb/bind
+end
+
 function cl
         cd $argv
         ls

@@ -181,4 +181,4 @@ input * {
 	xkb_variant "intl"
 }
 
-xwayland disable
+#xwayland disable
