@@ -1,23 +1,7 @@
 * {
-	font-size: 20px;
-	font-family: monospace;
+    font-size: 20px;
+    font-family: monospace;
 }
-
-window#waybar {
-	background: #292b2e;
-	color: #fdf6e3;
-}
-
-#custom-right-arrow-dark,
-#custom-left-arrow-dark {
-	color: #1a1a1a;
-}
-#custom-right-arrow-light,
-#custom-left-arrow-light {
-	color: #292b2e;
-	background: #1a1a1a;
-}
-
 #workspaces,
 #clock.1,
 #clock.2,
@@ -27,36 +11,60 @@ window#waybar {
 #cpu,
 #keyboard-state,
 #network,
+window#waybar {
+    background: #fdf6e3;
+    color: black;
+}
+
+#custom-right-arrow-dark,
+#custom-left-arrow-dark {
+    color: black;
+}
+
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+    color: black;
+    background: #1a1a1a;
+}
+
 
 #tray {
-	background: #1a1a1a;
+    background: #1a1a1a;
+    padding: 0 3px
 }
 
 #workspaces button {
-	padding: 0 5px;
-	color: #fdf6e3;
-}
-#workspaces button.focused {
-	color: #268bd2;
+    padding: 0 5px;
+    color: black;
 }
 
+#workspaces button.focused {
+    color: #268bd2;
+    background: #fdf6e3;
+}
 
 #pulseaudio {
-	color: #268bd2;
-	padding: 0 10px;
-}
-#memory {
-	color: #2aa198;
-	padding: 0 10px;
-}
-#cpu {
-	color: #6c71c4;
-	padding: 0 10px;
-}
-#keyboard-state {
-	padding: 0 10px;
-}
-#network {
-	padding: 0 10px;
+    color: black;
+    padding: 0 10px;
+    background: #fdf6e3;
 }
 
+#memory {
+    color: black;
+    padding: 0 10px;
+}
+
+#cpu {
+    color: black;
+    padding: 0 10px;
+}
+
+#keyboard-state {
+    color: black;
+    padding: 0 10px;
+}
+
+#network {
+    color: black;
+    padding: 0 10px;
+}
