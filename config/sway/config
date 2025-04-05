@@ -148,6 +148,7 @@ bindsym Mod1+6 exec stremio
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym --release F10 exec grim -g "$(slurp)" - | wl-copy
+bindsym F11 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym Insert exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 
@@ -168,7 +169,7 @@ for_window [app_id="powermenu"] floating enable
 set $opacity 0.7
 for_window [app_id="Alacritty"] opacity 0.8
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
-
+for_window [title="Open Folder"] floating enable
 
 set $LANG en_US.UTF-8
 exec_always {

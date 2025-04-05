@@ -14,6 +14,7 @@
 window#waybar {
     background: #fdf6e3;
     color: black;
+    border-radius: 10px;
 }
 
 #custom-right-arrow-dark,
