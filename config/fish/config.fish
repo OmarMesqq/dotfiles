@@ -25,6 +25,18 @@ function rm --description 'Alias rm to trash, ignoring flags'
     trash $argv
 end
 
+function ranger_cd
+    set -l tempfile (mktemp)
+    command ranger --choosedir=$tempfile $argv
+    if test -f $tempfile
+        set -l dir (cat $tempfile)
+        if test -d "$dir"
+            cd "$dir"
+        end
+        /usr/bin/rm -f $tempfile
+    end
+end
+
 function restart_network
     echo "4-1" | sudo tee /sys/bus/usb/drivers/usb/unbind
     sleep 2
@@ -78,6 +90,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+alias autoremove='sudo pacman -Rscn $(pacman -Qdtq)'
 alias vi='nvim'
 alias vim='nvim'
 alias nv='nvim' 
@@ -87,5 +100,5 @@ alias la='ls -A'
 alias gs='git status'
 alias gp='git pull'
 alias co='git checkout'
-alias r='ranger'
+alias r='ranger_cd'
 alias macos='cl /home/omar/repos/sequoia_OSX-KVM && ./OpenCore-Boot.sh'
