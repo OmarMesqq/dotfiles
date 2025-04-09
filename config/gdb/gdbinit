@@ -1,0 +1,2 @@
+set auto-load safe-path /home/omar/repos
+set debuginfod enabled off

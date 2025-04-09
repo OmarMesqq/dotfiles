@@ -10,4 +10,5 @@ cp ~/.config/neofetch/config.conf config/neofetch
 cp ~/.config/nvim/init.lua config/nvim
 cp ~/.config/nvim/lua/plugins.lua config/nvim/lua
 cp ~/.config/zathura/zathurarc config/zathura
+cp ~/.config/gdb/* config/gdb
 cp ~/scripts/* scripts/
