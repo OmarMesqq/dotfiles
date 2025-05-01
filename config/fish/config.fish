@@ -71,6 +71,9 @@ export LESSHISTFILE=-
 export TERM="xterm-256color"
 export VISUAL=nvim
 export EDITOR=nvim
+export ADB_LIBUSB=0 # uses native backend in ADB instead of libusb
+export FLYCTL_INSTALL="/home/omar/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 alias autoremove='sudo pacman -Rscn $(pacman -Qdtq)'
 alias vi='nvim'
