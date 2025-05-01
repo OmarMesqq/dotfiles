@@ -4,6 +4,11 @@ set $LANG en_US.UTF-8
 exec_always --no-startup-id export LANG=$LANG
 exec_always --no-startup-id export LC_ALL=$LANG
 
+
+exec --no-startup-id xset s off          
+exec --no-startup-id xset -dpms          
+exec --no-startup-id xset s noblank      
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 
