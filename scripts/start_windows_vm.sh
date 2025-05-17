@@ -1,5 +1,4 @@
 #!/bin/bash
-unset _JAVA_AWT_WM_NONREPARENTING
 
 qemu-system-x86_64 \
     -daemonize \
@@ -8,6 +7,7 @@ qemu-system-x86_64 \
     -cpu host \
     -m 8G \
     -smp 4 \
+    -enable-kvm \
     -display sdl \
     -audiodev pipewire,id=snd0 \
     -device ich9-intel-hda \

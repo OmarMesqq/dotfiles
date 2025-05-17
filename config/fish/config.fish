@@ -7,24 +7,6 @@ status --is-interactive; and source (jenv init -|psub)
 status --is-interactive; and source (rbenv init -|psub)
 pyenv init - fish | source
 
-
-function trash
-    set -l trash_dir "$HOME/.local/share/Trash/files"
-    mkdir -p "$trash_dir"
-    
-    for file in $argv
-        if test -e "$file"
-            mv "$file" "$trash_dir"/
-        else
-            echo "File '$file' not found" >&2
-        end
-    end
-end
-
-function rm --description 'Alias rm to trash, ignoring flags'
-    trash $argv
-end
-
 function ranger_cd
     set -l tempfile (mktemp)
     command ranger --choosedir=$tempfile $argv
@@ -33,7 +15,7 @@ function ranger_cd
         if test -d "$dir"
             cd "$dir"
         end
-        /usr/bin/rm -f $tempfile
+        rm -f $tempfile
     end
 end
 
@@ -78,17 +60,20 @@ set -x ANDROID_HOME $HOME/.android/Sdk/
 set -x PATH $PATH $ANDROID_HOME/platform-tools
 set -x PATH $PATH $ANDROID_HOME/emulator
 set -x PATH $PATH $ANDROID_HOME/cmdline-tools/latest/bin/
+set -x PATH $PATH $ANDROID_HOME/ndk/27.1.12297006/ 
+set -x PATH $PATH $ANDROID_HOME/build-tools/36.0.0/ 
+
 set -x PATH $PATH $HOME/.rbenv/shims 
 set -x PATH $PATH $HOME/.npm-global/bin 
 set -x PATH $PATH $HOME/.bin 
-# for aapt
-set -x PATH $PATH $ANDROID_HOME/build-tools/36.0.0/
 
 export LESSHISTFILE=-
 export TERM="xterm-256color"
 export VISUAL=nvim
 export EDITOR=nvim
-export _JAVA_AWT_WM_NONREPARENTING=1
+export ADB_LIBUSB=0 # uses native backend in ADB instead of libusb
+export FLYCTL_INSTALL="/home/omar/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 alias autoremove='sudo pacman -Rscn $(pacman -Qdtq)'
 alias vi='nvim'
@@ -102,3 +87,4 @@ alias gp='git pull'
 alias co='git checkout'
 alias r='ranger_cd'
 alias macos='cl /home/omar/repos/sequoia_OSX-KVM && ./OpenCore-Boot.sh'
+

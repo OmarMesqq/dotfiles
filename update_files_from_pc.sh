@@ -2,9 +2,9 @@
 set -ex
 
 cp ~/.config/alacritty/alacritty.toml config/alacritty 
-cp ~/.config/sway/config config/sway
+cp ~/.config/i3/config config/i3
 cp ~/.config/ranger/* config/ranger
-cp ~/.config/waybar/* config/waybar
+cp ~/.config/polybar/* config/polybar
 cp ~/.config/fish/config.fish config/fish
 cp ~/.config/neofetch/config.conf config/neofetch
 cp ~/.config/nvim/init.lua config/nvim

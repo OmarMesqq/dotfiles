@@ -38,7 +38,7 @@ fi
 
 # Case 0 (happy path): both are set and up to date
 if [[ "$existsInRam" == true && "$matchesInRam" == true && "$existsInDisk" == true && "$matchesInDisk" == true ]]; then
-    swaybg -i "$WALLPAPER_IN_RAM" -m fill &
+    feh --bg-fill "$WALLPAPER_IN_RAM" &
     exit 0
 fi
 
@@ -48,7 +48,7 @@ if [[ ("$existsInRam" == true && "$matchesInRam" == true && "$existsInDisk" == t
     cp "$METADATA_IN_RAM" "$METADATA_IN_DISK"
     cp "$WALLPAPER_IN_RAM" "$WALLPAPER_IN_DISK"
     
-    swaybg -i "$WALLPAPER_IN_RAM" -m fill &
+    feh --bg-fill "$WALLPAPER_IN_RAM" &
     exit 0
 fi
 
@@ -57,7 +57,7 @@ if [[ ("$existsInRam" == true && "$matchesInRam" == false && "$existsInDisk" == 
       ("$existsInRam" == false && "$existsInDisk" == true && "$matchesInDisk" == true) ]]; then
     cp "$WALLPAPER_IN_DISK" "$WALLPAPER_IN_RAM"
     cp "$METADATA_IN_DISK" "$METADATA_IN_RAM"
-    swaybg -i "$WALLPAPER_IN_RAM" -m fill &
+    feh --bg-fill "$WALLPAPER_IN_RAM" &
     exit 0
 fi
 
@@ -90,5 +90,4 @@ image_url=$(echo "$metadata" | jq -r '.hdurl // .url')
 # Download the wallpaper, cache it in disk and set it
 curl -s -o "$WALLPAPER_IN_RAM" "$image_url"
 cp "$WALLPAPER_IN_RAM" "$WALLPAPER_IN_DISK"
-swaybg -i "$WALLPAPER_IN_RAM" -m fill &
-
+feh --bg-fill "$WALLPAPER_IN_RAM" &

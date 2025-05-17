@@ -1,5 +1,14 @@
 set $mod Mod4
 
+set $LANG en_US.UTF-8
+exec_always --no-startup-id export LANG=$LANG
+exec_always --no-startup-id export LC_ALL=$LANG
+
+
+exec --no-startup-id xset s off          
+exec --no-startup-id xset -dpms          
+exec --no-startup-id xset s noblank      
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 
@@ -133,7 +142,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec waybar 
+exec polybar 
 exec cd /home/omar/scripts/ && bash set_nasa_pod_wallpaper.sh
 
 default_border none 
@@ -142,12 +151,12 @@ default_floating_border none
 bindsym Mod1+1 exec librewolf 
 bindsym Mod1+2 exec alacritty -e ranger 
 bindsym Mod1+3 exec librewolf --private-window 
-bindsym Mod1+4 exec chromium -enable-features=UseOzonePlatform --ozone-platform=wayland
-bindsym Mod1+5 exec code -enable-features=UseOzonePlatform --ozone-platform=wayland
+bindsym Mod1+4 exec chromium
+bindsym Mod1+5 exec code
 bindsym Mod1+6 exec stremio 
 
 bindsym XF86AudioPlay exec playerctl play-pause
-bindsym --release F10 exec grim -g "$(slurp)" - | wl-copy
+bindsym --release F10 exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 bindsym F11 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym Insert exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
@@ -156,30 +165,16 @@ bindsym Mod1+Shift+p exec ~/.bin/powermenu -s
 bindsym Mod1+Shift+r exec  ~/.bin/powermenu -r 
 bindsym Mod1+r       exec python ~/scripts/temp.py
 
-bindsym $mod+d exec wmenu-run
+bindsym $mod+d exec dmenu_run -b
 
 smart_gaps on
 gaps inner 2
 gaps outer 0
 
 # Tweaks for specific windows
+for_window [class="powermenu"] floating enable
+for_window [class="pavucontrol"] floating enable, resize set 800 600, move position center
 for_window [class="^.*"] border pixel 0
-for_window [app_id="powermenu"] floating enable
 
-set $opacity 0.7
-for_window [app_id="Alacritty"] opacity 0.8
-for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
-for_window [title="Open Folder"] floating enable
+exec_always --no-startup-id setxkbmap -layout us -variant intl
 
-set $LANG en_US.UTF-8
-exec_always {
-    export LANG=$LANG
-    export LC_ALL=$LANG
-}
-
-input * {
-	xkb_layout "us"
-	xkb_variant "intl"
-}
-
-#xwayland disable

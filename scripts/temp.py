@@ -1,30 +1,26 @@
 import os
 
-def toggle_gammastep_state(file_path="/tmp/gammastep_state"):
-    gammastep_night_cmd = "pkill gammastep; gammastep -O 3500 &"
-    gammastep_day_cmd = "pkill gammastep; gammastep -O 6000 &"
+STATE_FILE = "/tmp/redshift_state"
+REDSHIFT_NIGHT = "redshift -P -O 3500"
+REDSHIFT_DAY = "redshift -P -O 6000"
 
-    if not os.path.exists(file_path):
-        with open(file_path, "w") as state_file:
-            state_file.write("night\n")
-        os.system(gammastep_night_cmd)
+def toggle_redshift():
+    if not os.path.exists(STATE_FILE):
+        state = "night"
+        os.system(REDSHIFT_NIGHT)
     else:
-        with open(file_path, "r") as state_file:
-            last_line = state_file.readlines()[-1].strip()
+        with open(STATE_FILE, "r") as f:
+            state = f.read().strip()
 
-        # Toggle the state
-        if last_line == "night":
-            new_state = "day"
-            os.system(gammastep_day_cmd)
-        elif last_line == "day":
-            new_state = "night"
-            os.system(gammastep_night_cmd)
+        if state == "night":
+            state = "day"
+            os.system(REDSHIFT_DAY)
         else:
-            raise ValueError(f"Unexpected state in {file_path}: {last_line}")
+            state = "night"
+            os.system(REDSHIFT_NIGHT)
 
-        # Update the file with the new state
-        with open(file_path, "w") as state_file:
-            state_file.write(f"{new_state}\n")
+    with open(STATE_FILE, "w") as f:
+        f.write(state)
 
-toggle_gammastep_state()
-
+if __name__ == "__main__":
+    toggle_redshift()
