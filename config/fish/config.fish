@@ -6,6 +6,21 @@ set PATH $HOME/.jenv/bin $PATH
 status --is-interactive; and source (jenv init -|psub)
 pyenv init - fish | source
 
+
+function restart_network
+    echo "3-2" | sudo tee /sys/bus/usb/drivers/usb/unbind
+    sleep 2
+    echo "3-2" | sudo tee /sys/bus/usb/drivers/usb/bind
+end
+function updsys
+	sudo apt update
+	sudo apt full-upgrade
+	sudo apt autoremove
+	sudo apt autoclean
+	sudo snap refresh
+        sudo flatpak update
+end
+
 function ranger_cd
     set -l tempfile (mktemp)
     command ranger --choosedir=$tempfile $argv
@@ -16,12 +31,6 @@ function ranger_cd
         end
         rm -f $tempfile
     end
-end
-
-function restart_network
-    echo "4-1" | sudo tee /sys/bus/usb/drivers/usb/unbind
-    sleep 2
-    echo "4-1" | sudo tee /sys/bus/usb/drivers/usb/bind
 end
 
 function cl
@@ -52,7 +61,7 @@ function fish_prompt
 
     set_color brblack
     echo -n ' Δ '
-
+    
     # Reset color to normal and display the final $ symbol for the prompt
     set_color normal
     echo -n ' $ '
@@ -66,7 +75,7 @@ set -x PATH $PATH $ANDROID_HOME/emulator
 #set -x PATH $PATH $ANDROID_HOME/build-tools/36.0.0/ 
 
 set -x PATH $PATH $HOME/.npm-global/bin 
-set -x PATH $PATH $HOME/.bin 
+set -x PATH $PATH $HOME/.bin
 
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
@@ -78,6 +87,7 @@ export EDITOR=nvim
 export ADB_LIBUSB=0 # uses native backend in ADB instead of libusb
 export FLYCTL_INSTALL="/home/omar/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+export OLLAMA_HOST="127.0.0.1:11434"
 
 alias autoremove='sudo pacman -Rscn $(pacman -Qdtq)'
 alias vi='nvim'
@@ -90,5 +100,9 @@ alias gs='git status'
 alias gp='git pull'
 alias co='git checkout'
 alias r='ranger_cd'
-alias macos='cl /home/omar/repos/sequoia_OSX-KVM && ./OpenCore-Boot.sh'
+alias macos='cl /home/omar/Downloads/OSX-KVM'
+alias repos='cl /home/omar/Downloads/repos'
+alias docs='cl /home/omar/Documents'
+alias h='cl $HOME'
+alias chatbox='nohup /home/omar/.appImages/chatbox --no-sandbox > /home/omar/Downloads/chatbox.log 2>&1 & disown'
 
