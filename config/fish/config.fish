@@ -4,7 +4,6 @@ end
 
 set PATH $HOME/.jenv/bin $PATH
 status --is-interactive; and source (jenv init -|psub)
-status --is-interactive; and source (rbenv init -|psub)
 pyenv init - fish | source
 
 function ranger_cd
@@ -63,7 +62,6 @@ set -x PATH $PATH $ANDROID_HOME/cmdline-tools/latest/bin/
 set -x PATH $PATH $ANDROID_HOME/ndk/27.1.12297006/ 
 set -x PATH $PATH $ANDROID_HOME/build-tools/36.0.0/ 
 
-set -x PATH $PATH $HOME/.rbenv/shims 
 set -x PATH $PATH $HOME/.npm-global/bin 
 set -x PATH $PATH $HOME/.bin 
 
