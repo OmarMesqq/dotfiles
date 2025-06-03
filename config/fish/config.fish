@@ -50,6 +50,9 @@ function fish_prompt
         echo -n " $git_info"
     end
 
+    set_color brblack
+    echo -n ' Δ '
+
     # Reset color to normal and display the final $ symbol for the prompt
     set_color normal
     echo -n ' $ '
@@ -58,12 +61,15 @@ end
 set -x ANDROID_HOME $HOME/.android/Sdk/
 set -x PATH $PATH $ANDROID_HOME/platform-tools
 set -x PATH $PATH $ANDROID_HOME/emulator
-set -x PATH $PATH $ANDROID_HOME/cmdline-tools/latest/bin/
-set -x PATH $PATH $ANDROID_HOME/ndk/27.1.12297006/ 
-set -x PATH $PATH $ANDROID_HOME/build-tools/36.0.0/ 
+#set -x PATH $PATH $ANDROID_HOME/cmdline-tools/latest/bin/
+#set -x PATH $PATH $ANDROID_HOME/ndk/27.1.12297006/ 
+#set -x PATH $PATH $ANDROID_HOME/build-tools/36.0.0/ 
 
 set -x PATH $PATH $HOME/.npm-global/bin 
 set -x PATH $PATH $HOME/.bin 
+
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
 
 export LESSHISTFILE=-
 export TERM="xterm-256color"
