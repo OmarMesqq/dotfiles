@@ -45,6 +45,8 @@ packer.startup(function(use)
   -- Add other plugins as needed
   use "sindrets/diffview.nvim"
   use {'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end }
-  use 'neovim/nvim-lspconfig'
+  use {
+    'neovim/nvim-lspconfig',
+    commit = 'cb33dea610b7eff240985be9f6fe219920e630ef', -- Commit before libuv 
+  }
 end)
-
