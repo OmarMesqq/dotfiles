@@ -12,6 +12,7 @@ function restart_network
     sleep 2
     echo "3-2" | sudo tee /sys/bus/usb/drivers/usb/bind
 end
+
 function updsys
 	sudo apt update
 	sudo apt full-upgrade
@@ -58,9 +59,6 @@ function fish_prompt
         set_color green
         echo -n " $git_info"
     end
-
-    set_color brblack
-    echo -n ' Δ '
     
     # Reset color to normal and display the final $ symbol for the prompt
     set_color normal
@@ -75,7 +73,7 @@ set -x PATH $PATH $ANDROID_HOME/emulator
 #set -x PATH $PATH $ANDROID_HOME/build-tools/36.0.0/ 
 
 set -x PATH $PATH $HOME/.npm-global/bin 
-set -x PATH $PATH $HOME/.bin
+set -x PATH $PATH $HOME/.bin 
 
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
@@ -104,5 +102,5 @@ alias macos='cl /home/omar/Downloads/OSX-KVM'
 alias repos='cl /home/omar/Downloads/repos'
 alias docs='cl /home/omar/Documents'
 alias h='cl $HOME'
-alias chatbox='nohup /home/omar/.appImages/chatbox --no-sandbox > /home/omar/Downloads/chatbox.log 2>&1 & disown'
+alias chatbox='nohup /home/omar/.appImages/chatbox --no-sandbox > /dev/null 2>&1 & disown'
 
