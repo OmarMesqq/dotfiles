@@ -39,7 +39,6 @@ packer.startup(function(use)
   }
   use {
     'akinsho/bufferline.nvim',
-    tag = 'v2.*',
     requires = 'nvim-tree/nvim-web-devicons'
   }
   -- Add other plugins as needed
