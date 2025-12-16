@@ -125,114 +125,82 @@ install_basic_packages
 
 
 install_packages alacritty \
-    qt5-wayland \
-    qt6-wayland \
-    polkit \
-    waybar \
-    sway \
-    ueberzug \
-    wmenu \
-    wl-clipboard \
-    swaybg \
-    gammastep \
-    grim \
-    slurp \
-    xorg-xwayland
+   qt5-wayland \
+   qt6-wayland \
+   polkit \
+   waybar \
+   sway \
+   ueberzug \
+   wmenu \
+   wl-clipboard \
+   swaybg \
+   gammastep \
+   grim \
+   slurp \
+   xorg-xwayland
 
 install_packages noto-fonts-emoji \
-    adobe-source-han-sans-otc-fonts \
-    ttf-ubuntu-mono-nerd \
-    ttf-font-awesome \
-    otf-latinmodern-math \
-    ttf-dejavu \
-    otf-font-awesome
-
-
-install_packages pavucontrol \
-    pipewire-alsa \
-    pipewire \
-    pipewire-pulse \
-    pipewire-jack 
+   adobe-source-han-sans-otc-fonts \
+   ttf-ubuntu-mono-nerd \
+   ttf-font-awesome \
+   otf-latinmodern-math \
+   ttf-dejavu \
+   otf-font-awesome
 
 
 install_packages bind \
-    inetutils \
-    whois \
-    unzip \
-    p7zip \
-    docker \
-    docker-buildx \
-    qemu-desktop \
-    android-tools \
-    bmon \
-    htop
+   inetutils \
+   whois \
+   unzip \
+   p7zip \
+   docker \
+   docker-buildx \
+   qemu-desktop \
+   android-tools \
+   bmon \
+   htop
 
-sudo systemctl enable docker.service
+sudo systemctl enable docker.socket
 sudo gpasswd -a $(whoami) docker 
 
 install_packages zathura \
-    zathura-pdf-mupdf \
-    firefox \
+   zathura-pdf-mupdf \
 
-install_packages obsidian syncthing texlive
-install_packages code
-install_packages go go-tools gopls delve
-install_packages ghc ghc-static
-install_packages rust rust-src
 install_packages cmake gdb
 install_packages tcl tk
 
 # Home folder configuration
 set -e
 mkdir -p ~/.config/fish 
-mkdir ~/.config/ranger
-cp bashrc ~/.bashrc
-cp config.fish ~/.config/fish
-cp ranger/* ~/.config/ranger
-cp mimeapps.list ~/.config
-
-mkdir ~/scripts 
-cp scripts/* ~/scripts 
-
-mkdir ~/.config/alacritty 
-mkdir ~/.config/sway
-mkdir ~/.config/neofetch 
-mkdir ~/.config/waybar
-mkdir ~/.config/zathura 
+mkdir -p ~/.config/ranger
+mkdir -p ~/scripts 
+mkdir -p ~/.config/alacritty 
+mkdir -p ~/.config/sway
+mkdir -p ~/.config/waybar
+mkdir -p ~/.config/zathura 
 mkdir -p ~/.config/nvim/lua
 
-cp gitconfig ~/.gitconfig
-cp apps/alacritty.toml ~/.config/alacritty 
-cp apps/wgetrc ~/.wgetrc
-cp apps/zathurarc ~/.config/zathura 
-cp nvim/init.lua ~/.config/nvim
-cp nvim/lua/plugins.lua ~/.config/nvim/lua
+cp ../scripts/* ~/scripts 
 
-if [ "$IS_LAPTOP" = "true" ]; then
-    install_packages i3lock \
-    sof-firmware \
-    acpi \
-    bluez \
-    bluez-utils \
-    rtkit \
+cp ../bashrc ~/.bashrc
+cp ../mimeapps.list ~/.config
+cp ../gitconfig ~/.gitconfig
+cp ../wgetrc ~/.wgetrc
 
-    cp apps/laptop/config ~/.config/sway
-    cp apps/laptop/config.conf ~/.config/neofetch
-    cp apps/laptop/config.jsonc ~/.config/waybar
-else
-    cp apps/desktop/config ~/.config/sway
-    cp apps/desktop/config.conf ~/.config/neofetch
-    cp apps/desktop/config.jsonc ~/.config/waybar
-fi
+
+cp ../config/fish/config.fish ~/.config/fish
+cp ../config/ranger/* ~/.config/ranger
+
+
+cp ../config/alacritty/alacritty.toml ~/.config/alacritty 
+cp ../config/zathura/zathurarc ~/.config/zathura 
+cp ../config/nvim/init.lua ~/.config/nvim
+cp ../config/nvim/lua/plugins.lua ~/.config/nvim/lua
+cp ../config/sway/config ~/.config/sway
+cp ../config/waybar/* ~/.config/waybar
 
 # AUR packages 
-mkdir ~/AUR
+mkdir -p ~/AUR
 cd ~/AUR
 
-install_aur_package "Code Features" "code-features"
-install_aur_package "Code Marketplace" "code-marketplace"
-install_aur_package "Stremio" "stremio-beta"
-install_aur_package "Slack" "slack-desktop"
-
 install_kloak
-install_emscripten
