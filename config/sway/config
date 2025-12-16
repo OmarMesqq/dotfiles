@@ -164,6 +164,10 @@ bindsym Mod1+r       exec python ~/scripts/temp.py
 
 bindsym $mod+d exec wmenu-run -b
 
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
 smart_gaps on
 gaps inner 2
 gaps outer 0
