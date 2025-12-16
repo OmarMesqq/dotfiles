@@ -114,16 +114,17 @@ button:hover {
 }
 
 #clock {
-    background-color: #64727D;
+    background-color: transparent;
+    color: white;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: transparent;
+    color: white;
 }
 
 #battery.charging, #battery.plugged {
-    color: #ffffff;
+    color: white;
     background-color: #26A65B;
 }
 
@@ -169,12 +170,13 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
+    background-color: transparent;
+    color: white;
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: transparent;
+    color: white;
 }
 
 #disk {

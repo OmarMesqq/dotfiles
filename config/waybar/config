@@ -4,8 +4,8 @@
   "height": 24,
   "spacing": 5,
   "modules-left": ["sway/workspaces","sway/mode"],
-  "modules-center": ["sway/window"],
-  "modules-right": ["cpu","memory","battery","pulseaudio","clock","tray"],
+  "modules-center": ["clock"],
+  "modules-right": ["cpu","memory","battery","tray"],
 
   "cpu": { 
         "interval": 30, 
@@ -15,7 +15,4 @@
         "interval": 10, 
         "format": "  {percentage}%" 
     },
-    "pulseaudio": {
-        "format": "   {volume}%"
-    }
 }
