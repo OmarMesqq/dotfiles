@@ -130,10 +130,12 @@ install_packages alacritty \
    polkit \
    waybar \
    sway \
+   swaybg \
+   swayidle \
+   swaylock \
    ueberzug \
    wmenu \
    wl-clipboard \
-   swaybg \
    gammastep \
    grim \
    slurp \

@@ -141,11 +141,11 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Custom execs
 exec waybar 
-#exec cd /home/omar/scripts/ && bash set_nasa_pod_wallpaper.sh
-
-default_border none 
-default_floating_border none
+exec swayidle -w \
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 
 bindsym Mod1+1 exec librewolf 
 bindsym Mod1+2 exec alacritty -e ranger 
@@ -158,21 +158,29 @@ bindsym Mod1+3 exec librewolf --private-window
 #bindsym F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 #bindsym Insert exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 
+# Shutdown/reboot menu and warm color toggler
 bindsym Mod1+Shift+p exec ~/.bin/powermenu -s 
 bindsym Mod1+Shift+r exec  ~/.bin/powermenu -r 
 bindsym Mod1+r       exec python ~/scripts/temp.py
 
+# Program launcher menu
 bindsym $mod+d exec wmenu-run -b
 
-
+# Inc/dec brightness
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
+# Lock the screen
+bindsym Mod1+l exec swaylock -f -c 000000
+
+# Visual tweaks
 smart_gaps on
 gaps inner 2
 gaps outer 0
+default_border none 
+default_floating_border none
 
-## Tweaks for specific windows
+## for specific windows
 for_window [app_id="powermenu"] floating enable
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, resize set 800 600, move position center
 for_window [class="^.*"] border pixel 0
