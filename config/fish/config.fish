@@ -25,6 +25,7 @@ end
 
 # Prompt
 function fish_prompt
+    set -l last_status $status
     set user (whoami)
 
     # Check if the current directory is within a Git repository
@@ -42,6 +43,12 @@ function fish_prompt
     if set -q git_info
         set_color green
         echo -n " $git_info"
+    end
+
+    if test $last_status -ne 0
+        set_color red
+        echo -n " [$last_status]"
+        set_color normal
     end
     
     # Reset color to normal and display the final $ symbol for the prompt
