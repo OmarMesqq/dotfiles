@@ -8,4 +8,6 @@
 [column]
 	ui = auto
 [color]
-	ui = auto
+        ui = auto
+[core]
+        editor = nvim
