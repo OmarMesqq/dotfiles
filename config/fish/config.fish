@@ -69,6 +69,8 @@ set -x PATH $PATH $HOME/.bin
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 
+# set -x PATH $PATH $HOME/.elan/bin
+
 export LESSHISTFILE=-
 export TERM="xterm-256color"
 export VISUAL=nvim
