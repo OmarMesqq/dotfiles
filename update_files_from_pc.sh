@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -xuo pipefail
 
 cp ~/.bashrc bashrc
 cp ~/.gitconfig gitconfig

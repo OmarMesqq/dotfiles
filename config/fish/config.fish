@@ -1,10 +1,7 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    source (jenv init -|psub)
+    #pyenv init - fish | source
 end
-
-#set PATH $HOME/.jenv/bin $PATH
-#status --is-interactive; and source (jenv init -|psub)
-#pyenv init - fish | source
 
 function ranger_cd
     set -l tempfile (mktemp)
@@ -23,7 +20,6 @@ function cl
         ls
 end
 
-# Prompt
 function fish_prompt
     set -l last_status $status
     set user (whoami)
@@ -56,37 +52,41 @@ function fish_prompt
     echo -n ' $ '
 end
 
-#set -x ANDROID_HOME $HOME/.android/Sdk/
-#set -x PATH $PATH $ANDROID_HOME/platform-tools
-#set -x PATH $PATH $ANDROID_HOME/emulator
-#set -x PATH $PATH $ANDROID_HOME/cmdline-tools/latest/bin/
-#set -x PATH $PATH $ANDROID_HOME/ndk/27.1.12297006/ 
-#set -x PATH $PATH $ANDROID_HOME/build-tools/36.0.0/ 
+set -gx ANDROID_HOME $HOME/.android/Sdk/
+#set -gx VOLTA_HOME "$HOME/.volta"
 
-set -x PATH $PATH $HOME/.npm-global/bin 
-set -x PATH $PATH $HOME/.bin 
+set PATH $HOME/.jenv/bin $PATH
+set PATH $PATH $HOME/.bin 
+#set PATH $PATH $HOME/.npm-global/bin 
+#set PATH $PATH $HOME/.elan/bin
 
-set -gx VOLTA_HOME "$HOME/.volta"
-set -gx PATH "$VOLTA_HOME/bin" $PATH
+#set PATH $PATH $ANDROID_HOME/platform-tools
+#set PATH $PATH $ANDROID_HOME/emulator
+#set PATH $PATH $ANDROID_HOME/cmdline-tools/latest/bin/
+#set PATH $PATH $ANDROID_HOME/ndk/27.1.12297006/ 
+#set PATH $PATH $ANDROID_HOME/build-tools/36.0.0/ 
 
-# set -x PATH $PATH $HOME/.elan/bin
+#set PATH "$VOLTA_HOME/bin" $PATH
+
 
 export LESSHISTFILE=-
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 export VISUAL=nvim
 export EDITOR=nvim
 export ADB_LIBUSB=0 # uses native backend in ADB instead of libusb
 
-alias autoremove='sudo pacman -Rscn $(pacman -Qdtq)'
 alias vi='nvim'
 alias vim='nvim'
 alias nv='nvim' 
 alias gc='git clone'
-alias ..='cl ..'
-alias la='ls -A'
 alias gs='git status'
 alias gp='git pull'
 alias co='git checkout'
-alias r='ranger_cd'
+alias ..='cl ..'
 alias h='cl $HOME'
+alias repos='cl $HOME/Downloads/repos'
+alias la='ls -A'
+alias r='ranger_cd'
+alias passwdgen='$HOME/.bin/hollow-noodle' 
+alias autoremove='sudo pacman -Rscn $(pacman -Qdtq)'
 
