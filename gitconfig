@@ -1,13 +1,13 @@
 [user]
-	email = omarmsqt@gmail.com
-        name = OmarMesqq
+    email = omarmsqt@gmail.com
+    name = OmarMesqq
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [rerere]
-	enabled = true
+    enabled = true
 [column]
-	ui = auto
+    ui = auto
 [color]
-        ui = auto
+    ui = auto
 [core]
-        editor = nvim
+    editor = nvim
