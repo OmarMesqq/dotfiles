@@ -141,16 +141,27 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Custom execs
+
+
+# Run at startup
 exec waybar 
+exec swaybg -i Pictures/TheWoundedAngel_HugoSimberg.jpg
 exec swayidle -w \
     timeout 300 'swaylock -f -c 000000' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 
-bindsym Mod1+1 exec librewolf 
-bindsym Mod1+2 exec alacritty -e ranger 
-bindsym Mod1+3 exec librewolf --private-window 
-#bindsym Mod1+4 exec chromium
+
+# Daily software
+bindsym Mod1+1 exec chrome 
+bindsym Mod1+2 exec code
+
+# Program launcher menu
+bindsym $mod+d exec wmenu-run -b
+# Shutdown/reboot menu and warm color toggler
+bindsym Mod1+Shift+p exec ~/.bin/powermenu -s 
+bindsym Mod1+Shift+r exec ~/.bin/powermenu -r 
+bindsym Mod1+r       exec python ~/scripts/temp.py
+
 
 #bindsym XF86AudioPlay exec playerctl play-pause
 #bindsym --release F10 exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
@@ -158,32 +169,25 @@ bindsym Mod1+3 exec librewolf --private-window
 #bindsym F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 #bindsym Insert exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 
-# Shutdown/reboot menu and warm color toggler
-bindsym Mod1+Shift+p exec ~/.bin/powermenu -s 
-bindsym Mod1+Shift+r exec  ~/.bin/powermenu -r 
-bindsym Mod1+r       exec python ~/scripts/temp.py
 
-# Program launcher menu
-bindsym $mod+d exec wmenu-run -b
-
-# Inc/dec brightness
+# Increase/decrease brightness
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-
 # Lock the screen
 bindsym Mod1+l exec swaylock -f -c 000000
 
-# Visual tweaks
+
+# Eye candy 
 smart_gaps on
 gaps inner 2
 gaps outer 0
 default_border none 
 default_floating_border none
+for_window [class="^.*"] border pixel 0
 
-## for specific windows
+# Specific app tailoring 
 for_window [app_id="powermenu"] floating enable
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, resize set 800 600, move position center
-for_window [class="^.*"] border pixel 0
 
 
 # Enable tap to click on touchpad
@@ -191,7 +195,7 @@ input "1452:657:bcm5974" {
     tap enabled
 }
 
-# Macbook layout
+# Macbook kb layout
 input type:keyboard {
     xkb_model "macintosh"
     xkb_layout "us"

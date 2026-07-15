@@ -1,0 +1,13 @@
+base
+base-devel
+linux
+
+linux-firmware
+amd-ucode/intel-ucode
+broadcom-wl
+
+lvm2
+grub
+efibootmgr
+
+iwd

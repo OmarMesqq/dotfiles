@@ -87,6 +87,7 @@ alias h='cl $HOME'
 alias repos='cl $HOME/Downloads/repos'
 alias la='ls -A'
 alias r='ranger_cd'
+alias printshellhist='cat ~/.local/share/fish/fish_history | grep \'cmd:\' | cut -d\' \' -f3-'
 alias passwdgen='$HOME/.bin/hollow-noodle' 
 alias autoremove='sudo pacman -Rscn $(pacman -Qdtq)'
 
