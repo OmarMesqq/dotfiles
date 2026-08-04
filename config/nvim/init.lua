@@ -1,3 +1,6 @@
+-- vim.opt.encoding = 'utf-8'
+-- vim.opt.fileencoding = 'utf-8'
+
 -- General Vim configurations
  vim.cmd [[
    syntax on
@@ -26,7 +29,12 @@ vim.o.foldenable = true
 vim.o.termguicolors = true
 vim.cmd [[colorscheme desert]] -- Default scheme
 
--- KEYBINDS 
+-- KEYBINDS
+
+-- Map Option+C to 'ç' 
+vim.keymap.set('i', '<M-c>', 'ç', { noremap = true, silent = true })
+vim.keymap.set('n', '<M-c><M-c>', ':!pdflatex %<CR>', { noremap = true, silent = true })
+
 vim.g.mapleader = " "  
 vim.api.nvim_set_keymap('n', 'çç', ':!pdflatex %<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader><Tab>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
